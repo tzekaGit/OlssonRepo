@@ -1,0 +1,129 @@
+﻿<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Olsson Roofing: Login</title>
+	<link rel="stylesheet" href="themes/olssonThemes.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <style>
+
+        .center{text-align:center}
+
+        .ui-loader-background {
+    width:100%;
+    height:100%;
+    top:0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display:none;
+    position: fixed;
+    z-index:100;
+}
+
+.ui-loading .ui-loader-background {
+    display:block;
+}
+    </style>
+    
+   
+</head>
+<body>
+    
+        <div data-role="page" id="login" data-theme="a">
+            <div data-role="header" data-theme="b">
+                <h1>Olsson Roofing</h1>
+                <a href="../../" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+            </div>
+            <p>Olsson Job Manager / Login</p>
+            <div data-role="header" data-position="inline">
+                <h1>Login</h1>
+            </div>
+            <div data-role="content" data-theme="a">
+                <form action="#" id="tokenForm" method="POST" role="form">
+                    <div data-role="fieldcontain">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" id="username" value="admin@sikich.com" data-mini="true" />
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="password">Pasword:</label>
+                        <input type="password" name="password" id="password" data-mini="true" value="Pass@word1" />
+                    </div>
+
+                    <div data-role="fieldcontain" class="center">
+                        <input type="submit" class="btn btn-primary" data-textonly="false" data-textvisible="true" data-msgtext="Please wait .. "  value="Login" data-theme="e" />
+                    </div>
+                </form>
+            </div>
+     
+            <div data-role="footer" class="footer-docs" data-theme="a">
+                <p class="jqm-version"></p>
+                <p>&copy; Sikich LLP</p>
+            </div>
+        </div>
+    <script src="js/app.js"></script>
+    @section scripts
+    {
+    <script>
+        $(document).ready(function () {
+
+       
+            var password = $('#password');
+            $('form').attr("action", baseApiUrl +  "/Login/GetAccessToken");
+           
+            $('#tokenForm').on('submit', function (e) {
+                e.preventDefault();
+
+                var $this = $(this),
+                theme = $this.jqmData("theme") || $.mobile.loader.prototype.options.theme,
+                msgText = $this.jqmData("msgtext") || $.mobile.loader.prototype.options.text,
+                textVisible = $this.jqmData("textvisible") || $.mobile.loader.prototype.options.textVisible,
+                textonly = false //!!$this.jqmData("textonly");
+                html = "";
+                $.mobile.loading('show', {
+                    text: msgText,
+                    textVisible: textVisible,
+                    theme: theme,
+                    textonly: textonly,
+                    html: html
+                });
+
+
+                var usercredential = {
+
+                    tokenEmail: "admin@sikich.com", // $('#username').val(),
+                    tokenPassword: "Pass@word1" // $('#username').val(),
+                };
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: "POST",
+                    data: usercredential
+
+                }).done(function (data) {
+                   // console.log("logged in:")
+                  
+                    
+                    // Cache the access token in session storage.
+                    sessionStorage.setItem(tokenKey, data.AccessToken);
+                    var token = sessionStorage.getItem(tokenKey);
+                    console.log(token);
+                    $.mobile.loading("hide");
+                    //$('#playArea').removeClass('hidden');
+                    $(location).attr('href', 'index.html')
+                });
+            });
+        });
+
+
+
+    </script>
+
+
+
+   
+    <div class="ui-loader-background"> </div>
+</body>
+</html>

@@ -1,0 +1,374 @@
+﻿
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Olsson Roofing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <link href="themes/jquery.mobile.icons.min.css" rel="stylesheet" />
+    <link href="themes/olssonThemes.css" rel="stylesheet" />
+    <link href="themes/olssonThemes.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+        <style>
+            .dispaly-none {
+                display: none;
+            }
+
+            .dispaly-block {
+                display: block;
+            }
+
+            .bg-cust-fieldset {
+                background: #efefef;
+                padding: 15px !important;
+                margin-bottom: 10px !important;
+                border-radius: 10px;
+            }
+
+            .left {
+                float: left !important;
+            }
+
+            .right {
+                float: right;
+            }
+
+            .center {
+                text-align: center;
+            }
+
+            .custom-btn-medium {
+                width: 200px !important;
+            }
+        </style>
+        <style>
+            div.hasDatepicker {
+                display: block;
+                padding: 0;
+                overflow: visible;
+                margin: 8px 0;
+                max-width: 340px;
+            }
+
+            .ui-datepicker {
+                overflow: visible;
+                margin: 0;
+            }
+
+                .ui-datepicker .ui-datepicker-header {
+                    position: relative;
+                    padding: .6em 0;
+                    border-bottom: 0;
+                    font-weight: bold;
+                }
+
+                .ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+                    padding: 1px 0 1px 2px;
+                    position: absolute;
+                    top: .6em;
+                    margin-top: 0;
+                    text-indent: -9999px;
+                }
+
+                .ui-datepicker .ui-datepicker-prev {
+                    left: 9px;
+                }
+
+                .ui-datepicker .ui-datepicker-next {
+                    right: 2px;
+                }
+
+                .ui-datepicker .ui-datepicker-title {
+                    margin: 0 2.3em;
+                    line-height: 1.8em;
+                    text-align: center;
+                }
+
+                    .ui-datepicker .ui-datepicker-title select {
+                        font-size: 1em;
+                        margin: 1px 0;
+                    }
+
+                .ui-datepicker select.ui-datepicker-month-year {
+                    width: 100%;
+                }
+
+                .ui-datepicker select.ui-datepicker-month,
+                .ui-datepicker select.ui-datepicker-year {
+                    width: 49%;
+                }
+
+                .ui-datepicker table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin: 0;
+                }
+
+                .ui-datepicker td {
+                    border-width: 1px;
+                    padding: 0;
+                    text-align: center;
+                }
+
+                    .ui-datepicker td span, .ui-datepicker td a {
+                        display: block;
+                        padding: .2em 0;
+                        font-weight: bold;
+                        margin: 0;
+                        border-width: 0;
+                        text-align: center;
+                        text-decoration: none;
+                    }
+
+            .ui-datepicker-calendar th {
+                padding-top: .4em;
+                padding-bottom: .4em;
+            }
+
+                .ui-datepicker-calendar th span, .ui-datepicker-calendar span.ui-state-default {
+                    opacity: .7;
+                }
+
+            .ui-datepicker-calendar td a {
+                padding: .6em .5em;
+            }
+        </style>
+
+
+
+<script src="js/app.js"></script>
+<script src="libs/jqm/url.min.js"></script>
+ <script>
+    var indexChar = "-";
+    var iCnt = 1
+
+
+
+    function cloneMe(inrtBtn, id, objToClone) {
+
+        var oldListName = $("#" + objToClone + "   input[type='radio']").attr("name");
+
+
+        var $clone = $("#" + objToClone)
+            .clone(true, true)
+            .attr('id', objToClone + indexChar + iCnt);
+
+
+        $clone.find('input:radio').unbind();
+
+        $clone.find('input:radio').each(function () {
+            $(this).attr("checked", false).checkboxradio("refresh");
+            $(this).unbind();
+            $(this).attr("id", $(this).attr("id") + indexChar + iCnt);
+            $(this).attr("name", $(this).attr("name") + indexChar + iCnt).checkboxradio("refresh");
+        });
+
+       // $clone.find('h3').append("-" + $("#" + objToClone).length);
+
+        $clone.find('input:text').each(function () {
+            $(this).unbind();
+            $(this).attr("id", $(this).attr("id") + indexChar + iCnt);
+            $(this).attr("name", $(this).attr("name") + indexChar + iCnt)
+            $(this).val("");
+        });
+
+        //display the delete button if present
+        if ($clone.find("#" + id + "-delete")) {
+            $clone.find("#" + id + "-delete").css("display", "block");
+        }
+        //change label :for
+        $clone.find("label").each(function () {
+            var $rad = $(this);
+            $rad.attr("for", $rad.attr("for") + indexChar + iCnt);
+        });
+
+        $clone.find("listview").unbind();
+        $clone.find("listview").trigger("create");
+
+        var $parent = $(inrtBtn).parent();
+        var cloneHtml = '<fieldset id="' + id + '-placeholder-"' + iCnt + ' class="bg-cust-fieldset"  data-mini="true">' + $clone.html() + '</fieldset>'
+        //insert clone before the add button
+        $(cloneHtml).insertBefore($parent).trigger("create");
+        iCnt += 1;
+    }
+       $("form").submit(function (event) {
+                var postArray = JSON.stringify($(this).serializeArray());
+                console.log(postArray);
+                event.preventDefault();
+       });
+
+
+       var $result = $('#Result');
+       function submitForm(event) {
+
+           var uri = baseApiUrl + '/api/tbFormDataElements';
+           var rowId = $("#rowID").val();
+           if (rowId != "") {
+               uri = baseApiUrl + '/api/tbFormDataElements?id=' + rowId;
+           };
+           console.log(uri);
+
+           var data = JSON.stringify($("form").serializeArray());
+           data = eval(data);
+          // console.log(data);
+
+           //var token = sessionStorage.getItem(tokenKey);
+           //console.log(tokenKey, token);
+           //var headers = {};
+           //if (token) {
+           //    headers.Authorization = 'Bearer ' + token;
+           //}
+          // console.log(data);
+            $.ajax({
+                url: uri,
+                async: true,
+                cache: false,
+                 data: {'': data },
+                type: "Post",
+            })
+            .done(function (data, status, jqXHR) {
+              console.log("Done");
+            })
+            .success(function (data, status, jqXHR) {
+                
+                data = eval("data=" + data);
+                //console.log("success", eval("data=" + data));
+                if (data.rowID) {
+                      console.log("insert", data.rowID);
+                    $("#rowID").val(data.rowID);
+                } else {
+                    data = eval(data);
+                    console.log("update", data.status);
+                }
+
+
+            })
+            .fail(function (jqXHR, textStatus, err) {
+                var error = $.parseJSON(jqXHR.responseText);
+                msg = "Error: The server responded with the following error (" + err + ") " + error.message;
+                console.log(msg);
+            })
+
+
+       };
+
+
+       function deleteFieldset(btn) {
+            if (confirm("Are you sure that you want to delete the selected phone?")) {
+                $(btn).closest("fieldset").remove();
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        // Full tutorial on
+        var vidObj = null;
+        var context;
+        var canvas = null;
+        var navigator;
+
+        errCallBack = function (error) {	// Video Error Handler
+            console.log("Video  error: ", error.code);
+        };
+
+        //Attach Click event with camOnButton
+        function captureImg(thisCanvas) {
+            vidObj = document.getElementById("videoEle");
+            canvas = document.getElementById(thisCanvas);
+            context = canvas.getContext("2d");
+
+
+            // check web camera support on clicking camOnButton
+            if (navigator.getUserMedia) { // Standard
+                navigator.getUserMedia({ "video": true }, function (stream) {
+                    vidObj.src = stream;
+                    vidObj.play();
+                }, errCallBack);
+            } else if (navigator.webkitGetUserMedia) { // For  WebKit
+                navigator.webkitGetUserMedia({ "video": true }, function (stream) {
+                    vidObj.src = window.webkitURL.createObjectURL(stream);
+                    vidObj.play();
+                }, errCallBack);
+            }
+            else if (navigator.mozGetUserMedia) { // For Firefox
+                navigator.mozGetUserMedia({ "video": true }, function (stream) {
+                    vidObj.src = window.URL.createObjectURL(stream);
+                    vidObj.play();
+                }, errCallBack);
+            }
+        }
+        // Takes a snapshot of the video
+        function snap() {
+            context.drawImage(vidObj, 0, 0, 320, 240);
+            //vidObj.pause();
+            //vidObj = null;
+        }
+
+    </script>
+
+
+    <script src="libs/jqm/datePickUp.js"></script>
+</head>
+<body>
+
+    <form method="post"  id="ctl01">
+
+
+
+        <div data-role="main" class="ui-content">
+                <div data-expanded-icon="carat-u" id="section1" name="section1" text="Main" data-theme="e" data-role="collapsible" data-collapsed="true" data-collapsed-icon="user"><h1>Main</h1><div id="" data-role="fieldcontain"><p>Input the following information</p></div><div id="" data-role="fieldcontain"><label data-mini="true" for="CompanyName">Company Name</label><input type="text" data-mini="true" id="CompanyName" name="CompanyName" placeholder="Company" /></div><div id="" data-role="fieldcontain"><label data-mini="true" for="Fname">First Name</label><input type="text" data-mini="true" id="Fname" name="Fname" /></div><div id="" data-role="fieldcontain"><label data-mini="true" for="Lname">Last Name</label><input type="text" data-mini="true" id="Lname" name="Lname" /></div><div id="" data-role="fieldcontain"><label data-mini="true" for="Status">Status</label><select data-role="flipswitch" data-mini="true" id="Status" name="Status" data-theme="d"><option text="Yes" />Yes<option text="No" selected="true" />No</select></div><div id="" data-role="fieldcontain"><label data-mini="true" for="Type">Type</label><listview data-role="controlgroup" data-mini="true" id="Type" name="Type" data-theme="d"><input type="radio" name="Type" id="Type-Government" class="custom" data-mini="true" /><label for="Type-Government">Government</label><input type="radio" name="Type" id="Type-Private" class="custom" data-mini="true" /><label for="Type-Private">Private</label><input type="radio" name="Type" id="Type-Public" class="custom" data-mini="true" /><label for="Type-Public">Public</label></listview></div></div><div data-expanded-icon="carat-u" id="section2" name="section2" text="Customer Phones" data-theme="e" data-role="collapsible" data-collapsed="true" data-collapsed-icon="phone"><h1>Customer Phones</h1><fieldset id="phoneinfo-fieldset" class="bg-cust-fieldset" data-mini="true"><div class="ui-grid-a ui-bar-f" id="phoneinfo" name="phoneinfo"><div class="ui-block-a"><h3>Phone Rec No 1</h3></div><div class="ui-block-b"><button id="phoneinfo-delete" type="submit" data-theme="c" data-mini="true" data-inline="true" data-icon="delete" class="dispaly-none right" onclick="deleteFieldset(this)">Delete</button></div></div>
+                <div data-role="fieldcontain">
+                <label data-mini="true" for="PhoneType">Phone Type</label>
+                <listview data-role="controlgroup" data-mini="true" data-theme="d" id="PhoneType" name="PhoneType">
+                <input type="radio" name="PhoneType" id="Home" class="custom" data-mini="true" />
+                    <label for="Home">Home</label>
+                <input type="radio" name="PhoneType" id="Mobile" class="custom" data-mini="true" />
+                
+                    <label for="Mobile">Mobile</label>
+                    <input type="radio" name="PhoneType" id="Work" class="custom" data-mini="true" />
+                    <label for="Work">Work</label></listview></div>
+                
+                <div data-role="fieldcontain"><label data-mini="true" for="Phone">Phone #</label><input type="text" data-mini="true" id="Phone" name="Phone" /></div><div data-role="fieldcontain"><label data-mini="true" for="Comment">Phone Comment</label><input type="text" data-mini="true" id="Comment" name="Comment" /></div></fieldset><div data-mini="true"><a id="btn-add-phoneinfo" data-form="ui-btn-up-a" data-swatch="c" data-theme="e" data-icon="plus" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-plus ui-btn-icon-left ui-btn-f" onClick="cloneMe(this,'phoneinfo', 'phoneinfo-fieldset')">Add another Phone</a></div></div><div data-expanded-icon="carat-u" id="section4" name="section4" text="Other" data-theme="e" data-role="collapsible" data-collapsed="true"><h1>Other</h1><div id="" data-role="fieldcontain"><label data-mini="true" for="Comments">Comments</label><input type="text" data-mini="true" /></div><div id="" data-role="fieldcontain"><label data-mini="true" for="Picture">Pic</label></div></div><div data-expanded-icon="carat-u" id="section5" name="section5" text="Before/After Images" data-theme="e" data-role="collapsible" data-collapsed="true"><h1>Before/After Images</h1><div id="" data-role="fieldcontain"><label data-mini="true" for="BeforeImage">Before Image</label></div><div id="" data-role="fieldcontain"><label data-mini="true" for="AfterImage">After Image</label></div></div><div data-expanded-icon="carat-u" id="section3" name="section3" text="Properties" data-theme="e" data-role="collapsible" data-collapsed="true"><h1>Properties</h1><div id="" data-role="fieldcontain"><label data-mini="true" for="DocumentID">DocumentId</label><input type="text" data-mini="true" id="DocumentID" name="DocumentID" /></div><div id="" data-role="fieldcontain"><label data-mini="true" for="AddedByUser">Added By</label><input type="text" data-mini="true" id="AddedByUser" name="AddedByUser" /></div><div id="" data-role="fieldcontain"><label data-mini="true" for="AddedOn">Date Added</label><input type="text" data-mini="true" id="AddedOn" name="AddedOn" /></div><div id="" data-role="fieldcontain"><label data-mini="true" for="DocumentType">DocumentType</label><input type="text" data-mini="true" id="DocumentType" name="DocumentType" /></div><div id="" data-role="fieldcontain"><label data-mini="true" for="DocumentDate">Document Date</label><input type="text" data-mini="true" id="DocumentDate" name="DocumentDate" /></div></div></div><div class="ui-body"><div class="ui-grid-a"><div style="margin:0 auto; width:400px;"><div class="ui-block-c"><a href="#" rel="external" data-ajax="false" class="ui-btn ui-shadow   ui-corner-all ui-btn-inline  ui-icon-back ui-btn-icon-left  ui-btn-f">Cancel</a></div><div class="ui-block-c"><button id="save" type="submit" data-theme="f" data-mini="true" data-inline="true" data-icon="disk">Save</button></div><div class="ui-block-c"><button id="submit"
+                    type="button" data-theme="e" data-mini="true" data-inline="true" data-icon="check" onclick="submitForm()">Submit</button>
+
+
+            </div></div></div></div>
+
+        <div style=" width:600px; float:none; display:block; text-align:center;">
+            <input type="text" id="formId" name="formId" value="1" />
+            <input type="text" id="rowID" name="rowID" value="" />
+
+        </div>
+
+
+        <div class="row" style="background:#fff;">
+            <div class="col-lg-12">
+                <footer>
+                    <p style="text-align:right;">&copy; 2016 - Scientel Wireless CC Poirtal</p>
+                </footer>
+            </div>
+        </div>
+
+        <script>
+
+            function ConfirmOnDelete() {
+                if (confirm("Are you sure that you want to delete"))
+                {
+                    return true
+                } else {
+                    return false
+                }
+            }
+        </script>
+
+    </form>
+
+</body>
+</html>

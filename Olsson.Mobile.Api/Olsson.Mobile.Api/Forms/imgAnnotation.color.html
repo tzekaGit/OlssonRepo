@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Image Annotation</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+    <link rel="stylesheet" href="js/jquery/jquery.mobile.structure-1.4.5.min.css" />
+    <link href="themes/jquery.mobile.icons.min.css" rel="stylesheet" />
+    <link href="themes/olssonThemes.css" rel="stylesheet" />
+    <link href="themes/olssonThemes.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="js/jquery/jquery.mobile.structure-1.4.5.min.css" />
+    <script src="js/jquery/jquery-1.11.1.min.js"></script>
+    <script src="libs/jqm/url.min.js"></script>
+    <!--<script src="js/jquery/jquery.mobile-1.4.5.min.js"></script>-->
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="js/jquery/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/scripts/imgAnnotation.js"></script>
+
+
+    <style type="text/css">
+        .annotPin {
+            cursor: pointer;
+        }
+
+        .toolBtn {
+            width: 15px;
+            float: left;
+            clear: both;
+            width: 100%;
+        }
+
+        .toolbar div {
+            float: left !important;
+        }
+
+
+        #circle.ui-btn-icon-left::after,
+        #circle.ui-btn-icon-right::after,
+        #circle.ui-btn-icon-top::after,
+        #circle.ui-btn-icon-bottom::after,
+        #circle.ui-btn-icon-notext::after {
+            background-color: brown !important;
+        }
+
+        #circle.ui-btn.ui-btn-a:visited {
+            background-color: brown !important;
+        }
+
+        #circle.ui-btn.ui-btn-a {
+            background-color: brown !important;
+        }
+
+        #circle {
+            border: 1px solid #000 !important;
+            border-radius: 15px !important;
+            width: 30px !important;
+        }
+
+
+
+        .tool-btn.ui-btn-icon-left::after,
+        .tool-btn.ui-btn-icon-right::after,
+        .tool-btn.ui-btn-icon-top::after,
+        .tool-btn.ui-btn-icon-bottom::after,
+        .tool-btn.ui-btn-icon-notext::after {
+            background-color: transparent !important;
+        }
+
+        .tool-btn.ui-btn.ui-btn-a:visited {
+            background-color: transparent !important;
+        }
+
+        .tool-btn.ui-btn.ui-btn-a {
+            background-color: transparent !important;
+        }
+
+        #rectangular {
+            border: 1px solid #555 !important;
+            width: 30px !important;
+        }
+
+        #curved {
+            border: 1px solid #555 !important;
+            width: 20px !important;
+            height: 30px;
+            border-radius: 0 0 10px 10px;
+        }
+
+        #triangle-down {
+            width: 0;
+            height: 0;
+            border-left: 14px solid #fff;
+            border-right: 14px solid #fff;
+            border-top: 28px solid;
+        }
+
+        #triangle-up {
+            width: 0;
+            height: 0;
+            border-left: 14px solid #fff;
+            border-right: 14px solid #fff;
+            border-bottom: 28px solid;
+        }
+
+        .toolbar #rectangular {
+            color: #eee !important;
+            background-color: #555 !important;
+        }
+
+        .toolbar #curved {
+            color: #eee !important;
+            background-color: #555 !important;
+        }
+
+        .toolbar #triangle-down {
+            color: transparent !important;
+            background-color: transparent !important;
+        }
+
+        .toolbar #triangle-up {
+            color: transparent !important;
+            background-color: transparent !important;
+        }
+
+        fieldset {
+            float: left;
+            border: 1px solid #000 !important;
+            margin-left: 10px !important;
+            padding-left: 10px !important;
+        }
+
+        .grey {
+            background-color: grey !important;
+            color: #000 !important;
+        }
+
+        .red {
+            background-color: red !important;
+            color: #fff !important;
+        }
+
+        .blue {
+            background-color: blue !important;
+            color: #fff !important;
+        }
+
+        .green {
+            background-color: green !important;
+            color: #fff !important;
+        }
+
+        .yellow {
+            background-color: yellow !important;
+            color: #000 !important;
+        }
+
+        .annotPin {
+            text-align: center;
+            height: 30px;
+            line-height: 175%;
+        }
+
+        .toolbar div {
+            float: left;
+            margin: 0px 5px 5px;
+            padding: 0px;
+        }
+
+        .tool-btn.zoom {
+            height: 30px;
+            line-height: 175%;
+            margin: 0px;
+            padding: 0px 10px;
+        }
+
+        #trash {
+            width: 33px;
+            height: 33px;
+            background: url(../Images/trashcan-icon.gif) no-repeat 0 0;
+        }
+
+        @media only screen and (max-width: 760px) {
+            #some-element {
+                display: none;
+            }
+        }
+    </style>
+
+
+    <script type="text/javascript">
+
+
+
+
+    </script>
+
+    <script>
+
+(function(b){b.support.touch="ontouchend" in document;if(!b.support.touch){return;}var c=b.ui.mouse.prototype,e=c._mouseInit,a;function d(g,h){if(g.originalEvent.touches.length>1){return;}g.preventDefault();var i=g.originalEvent.changedTouches[0],f=document.createEvent("MouseEvents");f.initMouseEvent(h,true,true,window,1,i.screenX,i.screenY,i.clientX,i.clientY,false,false,false,false,0,null);g.target.dispatchEvent(f);}c._touchStart=function(g){var f=this;if(a||!f._mouseCapture(g.originalEvent.changedTouches[0])){return;}a=true;f._touchMoved=false;d(g,"mouseover");d(g,"mousemove");d(g,"mousedown");};c._touchMove=function(f){if(!a){return;}this._touchMoved=true;d(f,"mousemove");};c._touchEnd=function(f){if(!a){return;}d(f,"mouseup");d(f,"mouseout");if(!this._touchMoved){d(f,"click");}a=false;};c._mouseInit=function(){var f=this;f.element.bind("touchstart",b.proxy(f,"_touchStart")).bind("touchmove",b.proxy(f,"_touchMove")).bind("touchend",b.proxy(f,"_touchEnd"));e.call(f);};})(jQuery);
+    </script>
+
+</head>
+
+<body>
+    <div style="width:100%; display:block; clear:both;float:right; background:#fff;" id="tools">
+        <fieldset>
+            <div class="toolbar zoom">
+                <div><a href="#" id="zoomOut" class="zoom ui-btn ui-corner-all ui-shadow  ui-btn-inline ui-btn-inline ui-icon-minus  ui-btn-icon-notext  ui-btn-c">-</a></div>
+                <div><a href="#" id="zoomReset" class="zoom ui-btn ui-corner-all ui-shadow  ui-btn-inline ui-btn-inline  ui-btn-c" style="height:15px!important; line-height:100%; margin:5px 0px;">Reset</a></div>
+                <div><a href="#" id="zoomIn" class="zoom ui-btn ui-corner-all ui-shadow  ui-btn-inline ui-btn-inline ui-icon-plus  ui-btn-icon-notext  ui-btn-c">+</a></div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <div class="toolbar colors">
+                <div><a href="#" class="zoom ui-btn ui-corner-all ui-shadow  ui-btn-inline ui-btn-inline  ui-btn-f" style="height:15px!important; line-height:100%; margin:5px 0px;" onclick="saveAnnotations(annotPins)">Save</a></div>
+                <div><a href="#" class="zoom ui-btn ui-corner-all ui-shadow  ui-btn-inline ui-btn-inline  ui-btn-e" style="height:15px!important; line-height:100%; margin:5px 0px;" onclick="publishAnnotations(imageID, true)">Publish</a></div>
+                <div><a href="#" class="zoom ui-btn ui-corner-all ui-shadow  ui-btn-inline ui-btn-inline  ui-btn-f" style="height:15px!important; line-height:100%; margin:5px 0px;" onclick="if (confirm('Close the window without saving?')) { goToForm(); }">Close</a></div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div id="trash">
+
+            </div>
+        </fieldset>
+    </div>
+    <br />
+    <div id="imgdiv" style="text-align: left; border:1px solid green; overflow:scroll; margin-top:20px;">
+        <img src="#" id="map" style="float:left;" />
+    </div>
+    <span id="some-element"></span>
+</body>
+
+</html>

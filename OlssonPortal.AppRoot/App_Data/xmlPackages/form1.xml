@@ -1,0 +1,90 @@
+﻿<form name="New Account" template="../templates/tmpDataEntry.xslt" >
+  <!--Quote INFORMAION -->
+
+  <properties>
+    <property name ="style"> border:1px solid #9999;padding:2px;margin:2px;</property>
+    <property name ="class">txtNormal</property>
+    <property name ="border">1</property>
+  </properties>
+  
+  <row>
+    <!--firstname -->
+    <cr control="_td" class="col-md-3">
+      <element control="formlabel" text ="First Name" />
+    </cr>
+    <cr control="_td" class="col-md-1">
+      <element id="requiredcell" control="text">
+        <properties>
+          <paceholder name="text" value="Seomething" />
+        </properties>
+      </element>
+    </cr>
+    <cr control="_td" class="col-md-6">
+      <element control="textbox" id="FirstName" fieldlabel="First Name" columns="40" maxlength="50" required="yes" />
+    </cr>
+    <cr control="_td" class="col-md-2"> </cr>
+  </row>
+
+  <row>
+    <cr control="_td" class="col-md-3">
+      <element control="formlabel" text ="Last Name" />
+    </cr>
+    <cr control="_td" class="col-md-1">
+      <element id="requiredcell" control="text" />
+    </cr>
+    <cr control="_td" class="col-md-6">
+      <element control="textbox" id="LastName" fieldlabel="Last Name" columns="40" maxlength="50" required="yes" />
+    </cr>
+    <cr control="_td" class="col-md-2"> </cr>
+  </row>
+
+  <row>
+    <!--jsfirstname -->
+    <cr control="_td" class="col-md-3">
+      <element control="formlabel" text ="Status" />
+    </cr>
+    <cr control="_td" class="col-md-1">
+
+    </cr>
+    <cr control="_td" class="col-md-6">
+      <element control="dropdownlist" id="dropdownDemo" fieldlabel="Status"  required="yes">
+        <properties>
+
+        </properties>
+        <listitems>
+          <listitem value="" text="--select one --" />
+          <listitem value="1" text="Active" />
+        </listitems>
+      </element>
+    </cr>
+    <cr control="_td" class="col-md-2"> </cr>
+  </row>
+
+  <row>
+    <!--jsfirstname -->
+    <cr control="_td" class="col-md-3">
+      <element control="formlabel" text ="Status" />
+    </cr>
+    <cr control="_td" class="col-md-1">
+
+    </cr>
+    <cr control="_td" class="col-md-6">
+      <element control="checkboxlist" id="checkbox" name="DropDown">
+        <properties>
+          <property name="style">border:1px solid red; padding:0px;</property>
+          <property name="repeatlayout">flow</property>
+          <property name="repeatcolumns">2</property>
+          <property name="repeatdirection">horizontal</property>
+        
+        </properties>
+        <listitems>
+          <listitem value="0" text="Hidden" />
+          <listitem value="1" text="Active" />
+        </listitems>
+      </element>
+    </cr>
+    <cr control="_td" class="col-md-2"> </cr>
+
+  </row>
+  
+</form>

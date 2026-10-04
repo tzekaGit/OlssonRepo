@@ -1,0 +1,373 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Olsson Roofing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <link href="themes/jquery.mobile.icons.min.css" rel="stylesheet" />
+    <link href="themes/olssonThemes.css" rel="stylesheet" />
+    <link href="themes/olssonThemes.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <style>
+        .dispaly-none {display: none; }
+        .dispaly-block { display: block; }
+        .bg-cust-fieldset {background: #efefef;  padding: 15px !important; margin-bottom: 10px !important; border-radius: 10px;}
+        .left {float: left!important;}
+        .right {float: right;}
+        .center { text-align: center;}
+        .custom-btn-medium {width: 200px !important;}
+    </style>
+
+    <script>
+        $(function () {
+            $("#btn-add-phone").click(function () {
+                var iCnt = 1
+                $("#customer-phone")
+                    .clone()
+                    .attr('id', 'customer-phone' + iCnt)
+                    .insertAfter($("#customer-phone"));
+
+                $("#customer-phone" + iCnt + " #work").attr('id', 'work' + iCnt)
+                $("#customer-phone" + iCnt + " #home").attr('id', 'home' + iCnt)
+                $("#customer-phone" + iCnt + " #mobile").attr('id', 'mobile' + iCnt)
+
+                $("#customer-phone" + iCnt + " #work").attr('name', 'phone-type' + iCnt)
+                $("#customer-phone" + iCnt + " #home").attr('name', 'phone-type' + iCnt)
+                $("#customer-phone" + iCnt + " #mobile").attr('name', 'phone-type' + iCnt)
+                iCnt = iCnt + 1;
+                var btn = $("#customer-phone" + iCnt + " #btn-remove-phone");
+
+
+                console.log($("#customer-phone" + iCnt + " #btn-remove-phone"))
+
+                $("#customer-phone" + iCnt + " #btn-remove-phone").removeClass('display-none').addClass('display-block');
+
+
+            });
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        // Full tutorial on
+        var vidObj = null;
+        var context;
+        var canvas = null;
+        var navigator;
+
+        errCallBack = function (error) {	// Video Error Handler
+            console.log("Video  error: ", error.code);
+        };
+
+        //Attach Click event with camOnButton
+        function captureImg(thisCanvas) {
+            vidObj = document.getElementById("videoEle");
+            canvas = document.getElementById(thisCanvas);
+            context = canvas.getContext("2d");
+
+
+            // check web camera support on clicking camOnButton
+            if (navigator.getUserMedia) { // Standard
+                navigator.getUserMedia({ "video": true }, function (stream) {
+                    vidObj.src = stream;
+                    vidObj.play();
+                }, errCallBack);
+            } else if (navigator.webkitGetUserMedia) { // For  WebKit
+                navigator.webkitGetUserMedia({ "video": true }, function (stream) {
+                    vidObj.src = window.webkitURL.createObjectURL(stream);
+                    vidObj.play();
+                }, errCallBack);
+            }
+            else if (navigator.mozGetUserMedia) { // For Firefox
+                navigator.mozGetUserMedia({ "video": true }, function (stream) {
+                    vidObj.src = window.URL.createObjectURL(stream);
+                    vidObj.play();
+                }, errCallBack);
+            }
+        }
+        // Takes a snapshot of the video
+        function snap() {
+            context.drawImage(vidObj, 0, 0, 320, 240);
+            //vidObj.pause();
+            //vidObj = null;
+        }
+
+    </script>
+        <script>
+		$( document ).on( "pagecreate", function() {
+			$( "body > [data-role='panel']" ).panel();
+			$( "body > [data-role='panel'] [data-role='listview']" ).listview();
+		});
+		$( document ).one( "pageshow", function() {
+			$( "body > [data-role='header']" ).toolbar();
+			$( "body > [data-role='header'] [data-role='navbar']" ).navbar();
+		});
+    </script>
+</head>
+
+<body>
+    <div data-role="page" class="type-interior" data-theme="a" id="forms">
+        <div data-role="header" data-theme="b">
+            <h1>Olsson Roofing</h1>
+            <a href="#" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+         
+        </div>
+      </div>
+
+    <div data-role="page" class="type-interior" data-theme="a" id="job-form">
+            <div data-role="header" data-theme="b">
+                <div class="ui-body">
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a">
+                            <input type="button" data-theme="f" data-mini="true" data-inline="true" data-iconpos="notext" data-icon="home" value="Home" />
+                            <input type="button" data-theme="f" data-mini="true" data-inline="true" data-iconpos="notext" data-icon="arrow-l" value="Previous" />
+                        </div>
+                        <div class="ui-block-b"><p>Olsen Roofing</p></div>
+                        <div class="ui-block-c"><img src="../images/olsson-logo.jpg" style="height:30px; float:right;" /></div>
+                        <div class="ui-block-a">
+                            <a href="#inside-a" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-bars ui-btn-icon-left" data-iconpos="notext">Menu</a>
+                        </div>
+                        <div class="ui-block-b"></div>
+                        <div class="ui-block-c"></div>
+                      
+                    </div>
+                </div>
+            </div>
+
+            <div data-role="content">
+                <h2>New Record</h2>
+              
+                <form action="#" method="get">
+                    <div data-role="main" class="ui-content">
+                        <!--Main-->
+                        <div id="Main" data-role="collapsible" collapsed="false" data-theme="e" data-collapsed-icon="user" data-expanded-icon="carat-u" data-collapsed="true">
+                            <h2>Main</h2>
+
+                            <p>Fill the form below and press submit</p>
+
+                            <div data-role="fieldcontain">
+                                <label for="company">Company:</label>
+                                <input type="text" name="company" id="company" value="" data-mini="true" />
+                            </div>
+
+                            <div data-role="fieldcontain">
+                                <label for="last-name">Last Name:</label>
+                                <input type="text" name="last-name" id="last-name" data-mini="true" />
+                            </div>
+
+                            <div data-role="fieldcontain">
+                                <label for="first-name">First Name:</label>
+                                <input type="text" name="last-name" id="first-name" data-mini="true" />
+                            </div>
+
+                            <div data-role="fieldcontain">
+                                <label for="status">Active:</label>
+                                <select name="status" id="status" data-role="flipswitch" data-theme="d" data-mini="true">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+
+                            <div data-role="fieldcontain">
+                                <fieldset data-role="controlgroup" data-mini="true" data-theme="d">
+                                    <legend>Type:</legend>
+                                    <input type="radio" name="type" id="government" class="custom" data-mini="true" />
+                                    <label for="government">Government</label>
+
+                                    <input type="radio" name="type" id="private" class="custom" data-mini="true" />
+                                    <label for="private">Private</label>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <!--Customer Phones-->
+                        <div id="customer-phones" data-role="collapsible" data-theme="e" data-collapsed-icon="phone" data-expanded-icon="carat-u">
+                            <h2>Customer Phones</h2>
+                            <p>Fill the form below and press submit</p>
+
+                            <fieldset id="customer-phone" class="bg-cust-fieldset" data-mini="true">
+                                <fieldset class="ui-grid-a ui-bar-a">
+                                    <div class="ui-block-a"><h3>Phone Rec# 1</h3></div>
+                                    <div class="ui-block-b"><button id="btn-remove-phone" type="submit" data-theme="c" data-mini="true" data-inline="true" data-icon="delete" class="dispaly-block right">Delete</button></div>
+                                </fieldset>
+                                <div data-role="fieldcontain">
+                                    <fieldset data-role="controlgroup" data-mini="true" data-theme="d">
+                                        <legend>Phone Type:</legend>
+                                        <input type="radio" name="phone-type" id="work" value="work" class="custom" />
+                                        <label for="work">Work</label>
+
+                                        <input type="radio" name="phone-type" id="home" value="home" class="custom" />
+                                        <label for="home">Home</label>
+
+                                        <input type="radio" name="phone-type" id="mobile" value="mobile" class="custom" />
+                                        <label for="mobile">Mobile</label>
+                                    </fieldset>
+                                </div>
+
+                                <div data-role="fieldcontain">
+                                    <label for="phone-num" class="ui-icon-phone ui-icon-left">Phone #:</label>
+                                    <input typeof="phone" type="text" name="phone-num" id="phone-num" data-mini="true" placeholder="(XXX) XXX-XXXX" />
+                                </div>
+
+                                <div data-role="fieldcontain">
+                                    <label for="phone-comment">Comments:</label>
+                                    <textarea type="text" name="phone-comment" id="phone-comment" value="" data-mini="true"></textarea>
+                                </div>
+                            </fieldset>
+
+                            <div data-mini="true">
+                                <a id="btn-add-phone" data-form="ui-btn-up-a" data-swatch="c" data-theme="e" data-icon="plus" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-plus ui-btn-icon-left ui-btn-f">Add another Phone</a>
+                            </div>
+                        </div>
+
+                        <!--Others-->
+                        <div id="Others" data-role="collapsible" data-theme="e" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+                            <h2>Others</h2>
+                            <p>Fill the form below</p>
+
+                            <div data-role="fieldcontain">
+                                <label for="other-comment">Comment:</label>
+                                <textarea type="text" name="other-comment" id="other-comment" value="" data-mini="true"></textarea>
+                            </div>
+
+                            <div data-role="fieldcontain">
+                                <label for="btn-img-capture">Picture:</label>
+                                <a href="#" data-rel="popup" data-position-to="window" data-transition="pop" onclick="captureImg('canvas-other')" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-camera ui-btn-icon-left ui-btn-e">Preview</a>
+                            </div>
+
+                            <div data-role="fieldcontain">
+                                <fieldset class="ui-grid-c">
+                                    <div class="ui-block-a"></div>
+                                    <div class="ui-block-b">
+                                        <canvas id="canvas-other" width="320" height="240"></canvas>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <!-- Befor/After Image -->
+                        <div id="before-after-image" data-role="collapsible" data-theme="e" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+                            <h2>Befor/After Image</h2>
+                            <p>Before Image</p>
+                            <fieldset id="before-image" class="bg-cust-fieldset" data-mini="true">
+                                <div data-role="fieldcontain">
+                                    <fieldset class="ui-grid-c">
+                                        <div class="ui-block-a"></div>
+                                        <div class="ui-block-b">
+                                            <canvas id="canvas-before" width="320" height="240"></canvas>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div data-role="fieldcontain">
+                                    <a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" onclick="captureImg('canvas-before')" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-camera ui-btn-icon-left ui-btn-e">Preview</a>
+                                </div>
+                            </fieldset>
+                            <fieldset id="after-image" class="bg-cust-fieldset" data-mini="true">
+                                <p>After Image</p>
+                                <div data-role="fieldcontain">
+                                    <fieldset class="ui-grid-c">
+                                        <div class="ui-block-a"></div>
+                                        <div class="ui-block-b">
+                                            <canvas id="canvas-after" width="320" height="240"></canvas>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div data-role="fieldcontain">
+                                    <a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" onclick="captureImg('canvas-after')" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-camera ui-btn-icon-left ui-btn-e">Preview</a>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <!-- Properties -->
+                        <div id="Properties" data-role="collapsible" data-theme="e" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+                            <h2>Properties</h2>
+
+                            <div data-role="fieldcontain">
+                                <label for="documentid">DocumentID:</label>
+                                <input type="text" name="documentId" id="documentId" value="" data-mini="true" />
+                            </div>
+
+                            <div data-role="fieldcontain">
+                                <label for="documentTitle">Document Title:</label>
+                                <input type="text" name="documentTitle" id="documentTitle" data-mini="true" />
+                            </div>
+
+                            <div data-role="fieldcontain">
+                                <label for="addedBy">Added By:</label>
+                                <input type="text" name="addedBy" id="addedBy" data-mini="true" />
+                            </div>
+
+                            <div data-role="fieldcontain">
+                                <label for="documentType">Document Type:</label>
+                                <input type="text" name="documentType" id="documentType" data-mini="true" />
+                            </div>
+
+                            <div data-role="fieldcontain">
+                                <div data-role="fieldcontain">
+                                    <label for="documentDate">Document Date:</label>
+
+                                    <input type="text" name="documentDate" data-role="date" id="documentType" data-inline="true" data-mini="true" />
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="ui-body">
+                            <div class="ui-grid-a">
+                                <div style="margin:0 auto; width:300px;">
+                                    <div class="ui-block-c"><button type="submit" data-theme="f" data-mini="true" data-inline="true" data-icon="back">Cancel</button></div>
+                                    <div class="ui-block-c"><button type="submit" data-theme="f" data-mini="true" data-inline="true" data-icon="forward">Save</button></div>
+                                    <div class="ui-block-c"><button type="submit" data-theme="e" data-mini="true" data-inline="true" data-icon="check">Submit</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+
+            <div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:660px;">
+                <div data-role="header" data-theme="a">
+                    <h1>Delete Page?</h1>
+                </div>
+                <div role="main" class="ui-content">
+                    <video id="videoEle" width="640" height="480" autoplay></video>
+
+                    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancel</a>
+                    <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow" onclick="snap()">Capture</a>
+                </div>
+            </div>
+
+
+            <div data-role="footer" class="footer-docs" data-theme="a">
+                <p class="jqm-version"></p>
+                <p>&copy; Sikich LLP</p>
+            </div>
+
+        </div>
+
+    <div data-role="panel" id="inside-a" data-position="left" data-display="overlay" data-theme="b">
+        <ul data-role="listview">
+            <li data-icon="delete"><a href="#" data-theme="e" data-rel="close"></a> </li>
+            <li><a href="customerForms.html" rel="external" data-ajax="false">Customer Forms</a></li>
+            <li><a href="singlePage.html#job-form" rel="external" data-ajax="false">Job Forms</a></li>
+            <li><a href="#production-forms">Production Forms</a></li>
+            <li><a href="#service-timesheet">Service Timesheet</a></li>
+        </ul>
+    </div>
+
+
+</body>
+</html>
+
+
+
+

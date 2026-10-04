@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Olsson Roofing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <link href="themes/jquery.mobile.icons.min.css" rel="stylesheet" />
+    <link href="themes/olssonThemes.css" rel="stylesheet" />
+    <link href="themes/olssonThemes.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+ 
+
+    <style>
+        .dispaly-none {
+            display: none;
+        }
+
+        .dispaly-block {
+            display: block;
+        }
+
+        .bg-cust-fieldset {
+            background: #efefef;
+            padding: 15px !important;
+            margin-bottom: 10px !important;
+            border-radius: 10px;
+        }
+
+        .left {
+            float: left !important;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .custom-btn-medium {
+            width: 200px !important;
+        }
+
+    </style>
+
+ 
+    <script>
+		$( document ).on( "pagecreate", function() {
+			$( "body > [data-role='panel']" ).panel();
+			$( "body > [data-role='panel'] [data-role='listview']" ).listview();
+		});
+		$( document ).one( "pageshow", function() {
+			$( "body > [data-role='header']" ).toolbar();
+			$( "body > [data-role='header'] [data-role='navbar']" ).navbar();
+		});
+    </script>
+</head>
+
+<body>
+
+
+
+    <div data-role="page" class="type-interior" data-theme="a" id="form-list">
+        <div data-role="header" data-theme="b">
+            <div class="ui-body">
+                <div class="ui-grid-b">
+                    <div class="ui-block-a">
+                        <a href="#inside-a" class="ui-btn ui-shadow  ui-corner-all ui-btn-inline  ui-icon-bars  ui-btn-icon-notext ui-btn-c">Menu</a>
+                        <a href="index.html" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-arrow-l ui-btn-icon-notext ui-btn-c" rel="external" data-ajax="false">Previous</a>
+                    </div>
+                    <div class="ui-block-b"><img src="../images/olsson-logo.jpg" style="height:50px; float:right;" /></div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:right; font-size:12px; margin-right:10px;" id="breadCrumbs">Forms</div>
+        <div data-role="content">
+            <h1 data-mini="true" style="margin:0;"></h1>
+            <div data-role="main" class="ui-content" style="margin:0; padding:0" >
+               <div data-role="content" style="margin:0; padding:0" >
+                    <a id="doc-details-link" href="form1?id=0"   rel="external" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-plus ui-btn-icon-right right ui-btn-f" data-iconpos="notext" data-inline="true" data-mini="true" >Add new Form</a>
+                </div>
+
+                <ul data-role="listview" data-inset="true" id="gridLnks">
+                 
+                </ul>
+            </div>
+        </div>
+
+        <div data-role="footer" class="footer-docs" data-theme="a">
+            <p class="jqm-version"></p>
+            <p>&copy; Sikich LLP</p>
+        </div>
+
+    </div>
+    
+    <div data-role="panel" id="inside-a" data-position="left" data-display="overlay" data-theme="b">
+        <ul data-role="listview" id="userForms">
+            <li data-icon="delete"><a href="#" data-theme="e" data-rel="close"></a> </li>
+            <li data-icon="home"><a href="index.html" rel="external" data-ajax="false" data-theme="e" data-rel="home">Home</a> </li>
+            <li></li>
+            <li><a href="login.html" rel="external" data-ajax="false">Logoff</a></li>
+        </ul>
+    </div>
+   
+
+    <script src="js/app.js"></script>
+    <script src="libs/jqm/url.min.js"></script>
+    <script>
+        var id = $.url('?id');
+        console.log(id);
+        $("#doc-details-link").attr("href", "form1?id=" + id);
+
+        var url = baseApiUrl + "/api/View_FormData/" + id;
+  
+        var callBackStatus = true;
+
+        $(document).ready(function () {
+
+            //show spinner
+            AjaxLoader("a", "Please Wait", false)
+            var success = function(){
+            };
+
+            var token = sessionStorage.getItem(tokenKey);
+            //console.log(token);
+            var headers = {};
+            if (token) {
+                headers.Authorization = 'Bearer ' + token;
+            }
+
+
+            $.ajax({
+                url: url,
+                async: true,
+                cache: false,
+                type: "Get",
+            })
+             .done(function (data, status, jqXHR) {
+                 msg = "Done";
+                // console.log(msg);
+             })
+         .success(function (data, status, jqXHR) {
+            // console.log(data);
+             if (data.length == 0) {
+                 return;
+             }
+    
+             $("h1").text(data[0].formName);
+             $("#breadCrumbs").html('<a href="index.html"  rel="external" data-ajax="false">Forms</a> >' + data[0].formName);
+             //check for null data
+             if (data == null || (data.length > 0 && data[0].documentId == null)) {
+                 var gridLnk = '<li>No available data to display';
+                 $("#gridLnks").append(gridLnk).trigger('create');
+                 $("#gridLnks").listview('refresh')
+                 return;
+             }
+             $.each(data, function (index, d) {
+
+                 var gridLnk = '<li><a href="form1?id=' + d.formID + '&row=' + d.rowID + '"  rel="external" data-ajax="false"> <h2>' + d.documentTitle + '</h2><p><strong>01/15/2015 9:00 PM ' + d.formStatus + '</strong></p></a></li>'
+                 $("#gridLnks").append(gridLnk).trigger('create');
+                 $("#gridLnks").listview('refresh')
+
+             });
+
+
+         })
+         .fail(function (jqXHR, textStatus, err) {
+             var error = $.parseJSON(jqXHR.responseText);
+             msg = "Error: The server responded with the following error (" + err + ") " + error.message;
+           //  console.log(msg);
+         })
+
+            getFormLinks()
+            //hide spinner
+            $.mobile.loading("hide");
+
+       });
+
+        var callBackFn = function (data) {
+
+            if (!callBackStatus) {
+                return;
+            }
+          
+            data = $.parseJSON(data);
+            if (data.length == 0) {
+                return;
+            }
+             $("h1").text(data[0].FormName);
+            // console.log(data);
+             $.each(data, function (index, d) {
+
+                 var gridLnk = '<li><a href="form1?id=' + d.DocumentID + '"  rel="external" data-ajax="false"> <h2>' + d.DocumentTitle + '</h2><p><strong>01/15/2015 9:00 PM ' + d.FormStatus + '</strong></p></a></li>'
+                $("#gridLnks").append(gridLnk).trigger('create');
+                $("#gridLnks").listview('refresh')
+
+            });
+        }
+
+      
+
+    </script>
+
+    <script>
+
+     
+
+    </script>
+</body>
+</html>

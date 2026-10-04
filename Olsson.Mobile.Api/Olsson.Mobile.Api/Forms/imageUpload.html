@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript">
+        $(function () {
+            $('#Upload').click(function () {
+                var formData = new FormData();
+                var opmlFile = $('#me')[0];
+                formData.append("opmlFile", opmlFile.files[0]);
+
+                $.ajax({
+                    url: 'https://localhost:44301/api/Upload',
+                    type: 'POST',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                });
+            });
+        });
+        </script>
+</head>
+<body>
+    <form enctype="multipart/form-data" id="Upload">
+        <label>
+            Using JQuery
+        </label>
+        <input name="file" type="file" id="me" />
+        <input type="button" id="Upload" value="Upload" />
+    </form>
+
+
+</body>
+</html>

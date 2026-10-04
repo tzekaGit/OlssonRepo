@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Demo</title>
+    <link rel="stylesheet" href="../css/demo.css" type="text/css" />
+    <script type="text/javascript">
+
+var myObject = {
+    num: 50,
+    str: 'A string here',
+    today: new Date(),
+    ar: ['one', 'two', 'three'],
+    obj: {
+        min: 2,
+        max: 1000,
+        re: /^\d*(\.\d{2})?$/,
+        fn: function(val) {
+            // code here
+        }
+    }
+}
+
+var json = JSON.stringify(myObject);
+console.log(json);
+    </script>
+</head>
+<body>
+    <h1>JSON.stringify Example</h1>
+    <p>View the source code of this page to see the JavaScript. Hit F12 and reload the page to view the result in the console of any modern browser.</p>
+    <p class="end"><a href="../">Back to Index</a></p>
+</body>
+</html>

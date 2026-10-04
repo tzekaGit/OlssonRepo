@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="cache-control" content="no-cache">
+        <meta http-equiv="pragma" content="no-cache">        
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="viewport" content="width=device-width, initial-scale=1,
+        user-scalable=no">
+        <meta http-equiv="expires" content="-1" />
+        <link rel="stylesheet" href="../../_libs/jqm/jquery.mobile-1.1.0.min.css">
+        <script src="../../_libs/jqm/jquery-1.7.2.min.js"></script>
+        <script src="../../_libs/jqm/jquery.mobile-1.1.0.min.js"></script>
+        <script src="app.js"></script>
+        <link rel="stylesheet" href="style.css" />
+        <title>Task List</title>
+    </head>
+
+    <body>
+
+        <div data-role="page" id="indexPage" data-theme="b"> 
+            <div data-role="header" data-position="fixed" data-theme="b">
+                <a href="about.html" data-role="button" data-rel="dialog"
+                    data-transition="fade">About</a>
+                <h1>To Do List</h1>
+                <a href="form.html" id="addTaskButton" data-transition="slide" data-role="button" data-icon="plus"
+                    class="ui-btn-right">New</a>
+            </div> 
+
+            <div data-role="content">
+                <ul data-role="listview" data-theme="c" id="taskList"
+                    data-inset="true">
+                </ul>
+            </div>
+
+            <div data-role="footer" data-position="fixed" data-theme="b">
+                <h1 id="counter"></h1>
+            </div>
+        </div> 
+
+    </body>
+</html>
+

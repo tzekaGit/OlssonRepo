@@ -1,0 +1,69 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Olsson.WebApp.SiteMaster" %>
+<%@ Import Namespace="Olsson.DataAccess"  %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Olsson Roofing / Forms</title>
+
+    <asp:PlaceHolder runat="server">
+      <%--  <%: Scripts.Render("~/bundles/modernizr") %>--%>
+    </asp:PlaceHolder>
+
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <asp:PlaceHolder runat="server" >
+        <script>
+            var AppPath = '<%=Request.ApplicationPath=="/"? "": Request.ApplicationPath %>';
+        </script>
+      </asp:PlaceHolder>
+    <asp:ContentPlaceHolder ID="HeaderContentPlaceHolder" runat ="server" />
+     <script src="js/app.js"></script>
+    <script src="libs/jqm/url.min.js"></script>
+</head>
+<body>
+        <div data-role="page" class="type-interior" data-theme="a">
+
+        <div data-role="header" data-theme="b">
+            <div class="ui-body">
+                <div class="ui-grid-b">
+                    <div class="ui-block-a">
+                        <a id="btn-header-menu" href="#inside-a" class="ui-btn ui-shadow  ui-corner-all ui-btn-inline  ui-icon-bars  ui-btn-icon-notext ui-btn-c">Menu</a>
+                        <a id="btn-header-prev" href="forms.html" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-arrow-l ui-btn-icon-notext ui-btn-c" rel="external" data-ajax="false">Previous</a>
+                    </div>
+                    <div class="ui-block-b"><img src="../images/olsson-logo.jpg" style="height:50px; float:right;" /></div>
+                </div>
+            </div>
+        </div>
+
+        <h2>New Record</h2>
+
+
+     <form runat="server">
+        <asp:ScriptManager runat="server">
+
+        </asp:ScriptManager>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+   
+
+        <asp:ContentPlaceHolder ID="SideContent" runat="server">
+          
+        </asp:ContentPlaceHolder>
+           <div data-role="panel" id="inside-a" data-position="left" data-display="overlay" data-theme="b">
+                <ul data-role="listview" id="userForms">
+                    <li data-icon="delete"><a href="#" data-theme="e" data-rel="close"></a> </li>
+                    <li data-icon="home"><a href="index.html" rel="external" data-ajax="false" data-theme="e" data-rel="home">Home</a> </li>
+                    <li></li>
+                    <li><a href="login.html" rel="external" data-ajax="false">Logoff</a></li>
+                </ul>
+             </div>
+  
+    </form>
+
+ </div>
+</body>
+</html>

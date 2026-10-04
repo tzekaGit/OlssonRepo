@@ -1,0 +1,72 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Mobile.master.cs" Inherits="Olsson.WebApp.Site_Mobile" %>
+<%@ Register Src="~/ViewSwitcher.ascx" TagPrefix="friendlyUrls" TagName="ViewSwitcher" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Olsson Roofing / Forms</title>
+
+    <asp:PlaceHolder runat="server">
+      <%--  <%: Scripts.Render("~/bundles/modernizr") %>--%>
+    </asp:PlaceHolder>
+
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <asp:PlaceHolder runat="server" >
+        <script>
+            var AppPath = '<%=Request.ApplicationPath=="/"? "": Request.ApplicationPath %>';
+        </script>
+      </asp:PlaceHolder>
+    <asp:ContentPlaceHolder ID="HeaderContentPlaceHolder" runat ="server" />
+     <script src="js/app.js"></script>
+    <script src="libs/jqm/url.min.js"></script>
+</head>
+<body>
+    
+   <div data-role="page" class="type-interior" data-theme="a">
+      <div data-role="header" data-theme="b">
+            <div class="ui-body">
+                <div class="ui-grid-b">
+                    <div class="ui-block-a">
+                        <a href="#inside-a" class="ui-btn ui-shadow  ui-corner-all ui-btn-inline  ui-icon-bars  ui-btn-icon-notext ui-btn-c">Menu</a>
+                        <a href="index.html" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-arrow-l ui-btn-icon-notext ui-btn-c" rel="external" data-ajax="false">Previous</a>
+                    </div>
+                    <div class="ui-block-b"><img src="../images/olsson-logo.jpg" style="height:50px; float:right;" /></div>
+                </div>
+            </div>
+        </div>
+
+        <h2>New Record</h2>
+
+
+     <form runat="server">
+        <asp:ScriptManager runat="server">
+
+        </asp:ScriptManager>
+            <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+   
+
+        <asp:ContentPlaceHolder ID="SideContent" runat="server">
+                <div data-role="panel" id="inside-a" data-position="left" data-display="overlay" data-theme="b">
+        <ul data-role="listview">
+            <li data-icon="delete"><a href="#" data-theme="e" data-rel="close"></a> </li>
+            <li><a href="index.html" rel="external" data-ajax="false">Home</a></li>
+            <li><a href="customerForms.html" rel="external" data-ajax="false">Customer Forms</a></li>
+            <li><a href="singlePage.html#job-form" rel="external" data-ajax="false">Job Forms</a></li>
+            <li><a href="#production-forms">Production Forms</a></li>
+            <li><a href="#service-timesheet">Service Timesheet</a></li>
+        </ul>
+    </div>
+        </asp:ContentPlaceHolder>
+
+  
+    </form>
+        </div>
+
+
+
+</body>
+</html>

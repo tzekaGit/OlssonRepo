@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Olsson Roofing: Index</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+    <link rel="stylesheet" href="js/jquery/jquery.mobile.structure-1.4.5.min.css" />
+    <link href="themes/jquery.mobile.icons.min.css" rel="stylesheet" />
+    <link href="themes/olssonThemes.css" rel="stylesheet" />
+    <link href="themes/olssonThemes.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="js/jquery/jquery.mobile.structure-1.4.5.min.css" />
+    <script src="js/jquery/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery/jquery-u-1.11.4.js"></script>
+
+    <script src="js/jquery/jquery.mobile-1.4.5.min.js"></script>
+    <script src="libs/jqm/url.min.js"></script>
+    <script src="js/app.js"></script>
+
+
+    <style>
+        .dispaly-none {
+            display: none;
+        }
+
+        .dispaly-block {
+            display: block;
+        }
+
+        .bg-cust-fieldset {
+            background: #efefef;
+            padding: 15px !important;
+            margin-bottom: 10px !important;
+            border-radius: 10px;
+        }
+
+        .left {
+            float: left !important;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .custom-btn-medium {
+            width: 200px !important;
+        }
+    </style>
+
+    <script src="js/app.js"></script>
+    <script>
+        $(document).on("pagecreate", function () {
+            $("body > [data-role='panel']").panel();
+            $("body > [data-role='panel'] [data-role='listview']").listview();
+        });
+        $(document).one("pageshow", function () {
+            $("body > [data-role='header']").toolbar();
+            $("body > [data-role='header'] [data-role='navbar']").navbar();
+        });
+
+    </script>
+</head>
+
+<body>
+
+    <div data-role="page" class="type-interior" data-theme="a" id="form-list">
+        <div data-role="header" data-theme="b">
+            <div class="ui-body">
+                <div class="ui-grid-b">
+                    <div class="ui-block-a">
+                        <a href="#inside-a" class="ui-btn ui-shadow  ui-corner-all ui-btn-inline  ui-icon-bars  ui-btn-icon-notext ui-btn-c">Menu</a>
+                   
+                    </div>
+                    <div class="ui-block-b"><img src="css/img/olssonLogo-small.png"  /></div>
+                    <div class="ui-block-c"><span class="ui-btn ui-shadow  ui-corner-all ui-btn-inline  ui-icon-lock  ui-btn-icon-notext ui-btn-c" style="border:0;"></span> Hello <span id="username"></span>!</div>
+                </div>
+              
+            </div>
+        </div>
+
+        <ul data-role="listview" id="userFormLinks">
+            <li><a href="#">Homes</a></li>
+            <li></li>
+            <li><a href="login.html" rel="external" data-ajax="false" onclick="signOut()">Sign Out</a></li>
+        </ul>
+
+
+        <div data-role="footer" class="footer-docs" data-theme="a">
+            <p class="jqm-version"></p>
+            <p style="text-align:right; margin-right:20px;">&copy; <span id="spanYear"></span> - Olsson Roofing</p>
+        </div>
+
+    </div>
+
+    <div data-role="panel" id="inside-a" data-position="left" data-display="overlay" data-theme="b">
+        <ul data-role="listview" id="userForms">
+            <li data-icon="delete"><a href="#" data-theme="e" data-rel="close"></a> </li>
+            <li data-icon="home"><a href="#" data-theme="e" data-rel="home">Home</a> </li>
+            <li></li>
+            <li><a href="#" rel="external" data-ajax="false" onclick="signOut()" >Sign Out</a></li>
+        </ul>
+    </div>
+    <script>
+
+        $(document).ready(function () {
+            AjaxLoader("a", "Please Wait", false)
+            getFormLinks()
+            documentReady();
+        });
+       
+    </script>
+</body>
+</html>

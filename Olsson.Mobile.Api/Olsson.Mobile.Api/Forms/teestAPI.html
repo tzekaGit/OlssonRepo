@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        a {
+            color: white;
+        }
+
+            a:link {
+                text-decoration: underline;
+                color: white;
+            }
+
+            a:visited {
+                text-decoration: none;
+            }
+
+            a:active {
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: underline;
+                color: red;
+            }
+
+        #center {
+            width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        fieldset legend {
+            color: #FFF;
+        }
+
+        h1 {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        table, td, th {
+            border: 1px solid #ffd800;
+            text-align: center;
+        }
+
+        th {
+            background-color: #ffd800;
+            color: white;
+        }
+
+        form {
+            float: right;
+            width: 845px;
+            display: none;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body style="background-color: rgba(5, 4, 0, 0.97); color:#FFF ">
+    <section>
+
+        <header>
+            <h1>Student Registration</h1>
+        </header>
+
+        <aside id="data" style="float:left">
+
+
+            <div id="Result" style="width:894px; color:#FFF;margin-bottom:10px ;margin-left:80px "> </div>
+            <table id="students" style="width: 900px; margin-left: 80px; display:none">
+                <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td>First Name</td>
+                        <td> Last Name</td>
+                        <td> Age</td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <form method="post" id="createStudent">
+                <fieldset>
+                    <legend>Student Registration</legend>
+                    <label for="Id">Id</label>    <input type="number" id="Id" name="Id" title="Id" required />
+
+                    <label for="FirstName">First Name</label>  <input type="text" id="FirstName" name="FirstName" title="FirstN ame" required />
+                    <label for="LastName">Last Name</label> <input type="text" id="LastName" name="LastName" title="LastName" required />
+                    <label for="Age">Age</label>   <input type="number" id="Age" name="Age" title="Age" required style="clear:right" />
+                    <input type="submit" title="Create Student" name="Create" value="Create Student" style="margin-top:10px; text-align:center;float:right" />
+                </fieldset>
+
+            </form>
+        </aside>
+        <section id="ControlCenter" style="float:right; margin-right:80px">
+            <header><h2>Control Center</h2></header>
+            <button id="getData" name="getData" style="clear:both" onclick="GetAllStudents();">Show Students Data</button>
+            <br />
+            <button id="ShowHideForm">Show Registration Form</button>
+        </section>
+    </section>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.min.js"></script>
+
+
+    <script>
+        var uri = '/api/Students';
+        var $result = $('#Result');
+        var msg;
+        $('#ShowHideForm').click(function (event) {
+            $('#createStudent').toggle();
+
+            if ($(this).text() === 'Hide Registration Form') {
+                $(this).text('Show Registration Form');
+            } else {
+                $(this).text('Hide Registration Form');
+            }
+        })
+        function showNotification(sucess, message) {
+            if (sucess === true) {
+                $result.css('background-color', "#a1965a");
+            }
+            else {
+                $result.css('background-color', "#FF0000");
+            }
+            $result.text(message);
+            $result.show();
+        }
+        function GetAllStudents() {
+            $('#getData').text('Refresh Data');
+            $result.hide();
+            $('#students tbody').empty();
+            $.getJSON(uri)
+                .done(function (data) {
+                    $('#students').show();
+                    $.each(data, function (key, item) {
+                        $('#students tbody').append('<tr><td>' + item.id + '</td> <td>' + item.firstName + '</td> <td>' + item.lastName + '</td> <td>' + item.age + '</td></tr>');
+                    });
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    var error = $.parseJSON(jqXHR.responseText);
+                    msg = "Failed to get student data Error message is " + error.message;
+                    showNotification(false, msg);
+                });
+        };
+        $('#createStudent').submit(function (event) {
+            var uri = 'https://localhost:44301/api/Students';
+            var data = $("#createStudent").serialize();
+            $.ajax({
+                url: uri,
+                data: data,
+                type: "POST",
+            })
+            .done(function (data, status, jqXHR) {
+                msg = "Success, the resource uri can be found at ";
+                showNotification(true, msg);
+                $('<a>', {
+                    text: 'Go to new resource',
+                    title: 'View Resource location',
+                    href: jqXHR.getResponseHeader("Location")
+                }).appendTo('#Result');
+                GetAllStudents();
+                $result.show();
+            })
+            .fail(function (jqXHR, textStatus, err) {
+                var error = $.parseJSON(jqXHR.responseText);
+                msg = "Error: The server responded with the following error (" + err + ") " + error.message;
+                showNotification(false, msg);
+            })
+            event.preventDefault();
+        });
+    </script>
+</body>
+</html>

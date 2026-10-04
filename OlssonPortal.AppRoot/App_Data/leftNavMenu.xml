@@ -1,0 +1,5 @@
+﻿<navMenu>
+  <siteMapNode order="1" text="Home"  navigateUrl ="~/" title="Menu"   roles="Administrator, AppAdministrator" />
+  <siteMapNode order="3" text="Forms"  navigateUrl="~/Forms/default.aspx" title=""  description="" roles="Administrator, AppAdministrator" />
+
+</navMenu>

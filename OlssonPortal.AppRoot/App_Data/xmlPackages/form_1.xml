@@ -1,0 +1,283 @@
+﻿<?xml version="1.0"?>
+<form FormID="form1" FormName="Customer Forms" FormStatus="Active">
+  <properties>
+    <property name="formID" value="1"/>
+  </properties>
+  <row>
+    <row>
+      <element control="section" id="section1" text="Main">
+        <properties>
+          <property name="theme" value="e"/>
+          <property name="role" value="collapsible"/>
+          <property name="collapsed" value="true"/>
+          <property name="icon" value="user"/>
+        </properties>
+
+        <row>
+          <element control="label" text="Input the following information"/>
+        </row>
+        
+        <row>
+          <element control="formlabel" text="Company Name" for="CompanyName" />
+          <element control="textbox" id = "CompanyName" text="">
+            <properties>
+              <property name="placeholder" value="Company" />
+            </properties>
+          </element>
+        </row>
+
+        <row>
+          <element control="formlabel" text="First Name" for="Fname"/>
+          <element control="textbox" id="Fname" text="">
+            <properties>
+              <property name="sectionID" value="1"/>
+              <property name="elementID" value="2"/>
+              <property name="class" value="textboxstyle"/>
+            </properties>
+          </element>
+        </row>
+        
+        <row>
+          <element control="formlabel" text="Last Name" for="Lname"/>
+          <element control="textbox" id="Lname" text="">
+            <properties>
+              <property name="sectionID" value="1"/>
+              <property name="elementID" value="4"/>
+              <property name="class" value="textboxstyle"/>
+            </properties>
+          </element>
+        </row>
+        
+        <row>
+          <element control="formlabel" text="Status" for="Status"/>
+          <element control="flipswitch" id="Status">
+            <properties>
+              <property name="sectionID" value="1"/>
+              <property name="elementID" value="12"/>
+              <property name="theme" value="d"/>
+            </properties>
+            <listitems>
+              <listitem text = "Yes" value = "Yes" />
+              <listitem text = "No" value = "No" selected="true" />
+            </listitems>
+          </element>
+        </row>
+
+        <row>
+          <element control="formlabel" text="Type" for="Type"/>
+          <element control="radiobuttonlist" id="Type">
+            <properties>
+              <property name="theme" value="d" />
+            </properties>
+            <listitems>
+              <listitem text="Government" value="Government"/>
+              <listitem text="Private" value="Private"/>
+              <listitem text="Public" value="Public"/>
+            </listitems>
+          </element>
+        </row>
+        
+      </element>
+    </row>
+
+    <row>
+      <element control="section" id="section2" text="Customer Phones">
+        <properties>
+          <property name="text" value="Customer Phones"/>
+          <property name="theme" value="e"/>
+          <property name="role" value="collapsible"/>
+          <property name="collapsed" value="false"/>
+          <property name="icon" value="phone"/>
+        </properties>
+        
+        <element control="container" id="phoneinfo">
+          <properties>
+            <property name="title" value="Phone Rec No"/>
+            <property name="hasclonebtn" value="true" display="block" />
+            <property name="hasdeletebtn" value="true" display="none"/>
+          </properties>
+          
+        
+          <row>
+            <element control="formlabel" text="Phone Type" for="PhoneType"/>
+            <element control="radiobuttonlist" id="PhoneType">
+              <properties>
+                <property name="sectionID" value="2"/>
+                <property name="elementID" value="6"/>
+              </properties>
+              <listitems>
+                <listitem text="Home" value="Home"/>
+                <listitem text="Mobile" value="Mobile"/>
+                <listitem text="Work" value="Work"/>
+              </listitems>
+            </element>
+          </row>
+          
+          <row>
+            <element control="formlabel" text="Phone #" for="Phone"/>
+            <element control="textbox" id="Phone" text="">
+              <properties>
+                <property name="sectionID" value="2"/>
+                <property name="elementID" value="7"/>
+                <property name="class" value="textboxstyle"/>
+              </properties>
+            </element>
+          </row>
+          
+          <row>
+            <element control="formlabel" text="Phone Comment" for="Comment"/>
+            <element control="textbox" id="Comment" text="">
+              <properties>
+                <property name="sectionID" value="2"/>
+                <property name="elementID" value="8"/>
+                <property name="textmode" value="multiline"/>
+                <property name="rows" value="3"/>
+                <property name="class" value="textboxstyle"/>
+              </properties>
+            </element>
+          </row>
+          
+        </element>
+      </element>
+    </row>
+    
+
+    <row>
+      <element control="section" id="section4" text="Other">
+        <properties>
+          <property name="text" value="Other"/>
+          <property name="theme" value="e"/>
+          <property name="role" value="collapsible"/>
+          <property name="collapsed" value="true"/>
+        </properties>
+        <row>
+          <element control="formlabel" text="Comments" for="Comments"/>
+          <element control="textbox" ID="Comments" text="">
+            <properties>
+              <property name="sectionID" value="4"/>
+              <property name="elementID" value="14"/>
+              <property name="textmode" value="multiline"/>
+              <property name="rows" value="3"/>
+              <property name="class" value="textboxstyle"/>
+            </properties>
+          </element>
+        </row>
+        <row>
+          <element control="formlabel" text="Pic" for="Picture"/>
+          <element control="imagecapture" ID="Picture">
+            <properties>
+              <property name="sectionID" value="4"/>
+              <property name="elementID" value="15"/>
+              <property name="width" value="480"/>
+              <property name="height" value="640"/>
+            </properties>
+          </element>
+        </row>
+      </element>
+    </row>
+
+
+   
+
+    <row>
+      <element control="section" id="section5" text="Before/After Images">
+        <properties>
+          <property name="text" value="Before/After Images"/>
+          <property name="theme" value="e"/>
+          <property name="role" value="collapsible"/>
+          <property name="collapsed" value="true"/>
+        </properties>
+        <row>
+          <element control="formlabel" text="Before Image" for="BeforeImage"/>
+          <element control="imagecapture" id="BeforeImage">
+            <properties>
+              <property name="sectionID" value="5"/>
+              <property name="elementID" value="22"/>
+              <property name="width" value="480"/>
+              <property name="height" value="640"/>
+            </properties>
+          </element>
+        </row>
+        <row>
+          <element control="formlabel" text="After Image" for="AfterImage"/>
+          <element control="imagecapture" id="AfterImage">
+            <properties>
+              <property name="sectionID" value="5"/>
+              <property name="elementID" value="23"/>
+              <property name="width" value="480"/>
+              <property name="height" value="640"/>
+            </properties>
+          </element>
+        </row>
+      </element>
+    </row>
+
+    <row>
+      <element control="section" id="section3" text="Properties">
+        <properties>
+          <property name="text" value="Properties"/>
+          <property name="theme" value="e"/>
+          <property name="role" value="collapsible"/>
+          <property name="collapsed" value="true"/>
+        </properties>
+        <row>
+          <element control="formlabel" text="DocumentId" for="DocumentID"/>
+          <element control="textbox" text="" id="DocumentID">
+            <properties>
+              <property name="sectionID" value="3"/>
+              <property name="elementID" value="19"/>
+              <property name="readonly" value="true"/>
+            </properties>
+          </element>
+        </row>
+        <row>
+          <element control="formlabel" text="Added By" for="AddedByUser"/>
+          <element control="textbox" text="" id="AddedByUser">
+            <properties>
+              <property name="sectionID" value="3"/>
+              <property name="elementID" value="10"/>
+              <property name="readonly" value="true"/>
+            </properties>
+          </element>
+        </row>
+        <row>
+          <element control="formlabel" text="Date Added" for="AddedOn"/>
+          <element control="textbox" text="" id="AddedOn">
+            <properties>
+              <property name="sectionID" value="3"/>
+              <property name="elementID" value="11"/>
+              <property name="readonly" value="true"/>
+              <property name="mode" value="datetime"/>
+              <property name="text" value="datetimenow"/>
+            </properties>
+          </element>
+        </row>
+        <row>
+          <element control="formlabel" text="DocumentType" for="DocumentType"/>
+          <element control="textbox" id="DocumentType">
+            <properties>
+              <property name="sectionID" value="3"/>
+              <property name="elementID" value="17"/>
+              <property name="readonly" value="true"/>
+            </properties>
+          </element>
+        </row>
+        <row>
+          <element control="formlabel" text="Document Date" for="DocumentDate"/>
+          <element control="textbox" text="" id="DocumentDate">
+            <properties>
+              <property name="sectionID" value="3"/>
+              <property name="elementID" value="18"/>
+              <property name="readonly" value="true"/>
+              <property name="mode" value="datetime"/>
+              <property name="text" value="datetimenow"/>
+            </properties>
+          </element>
+        </row>
+      </element>
+    </row>
+    
+    
+   
+</row>
+</form>

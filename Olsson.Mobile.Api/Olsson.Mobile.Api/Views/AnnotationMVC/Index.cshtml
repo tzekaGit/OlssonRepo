@@ -1,0 +1,25 @@
+﻿@model Olsson.Mobile.Api.Models.tbFormDataElementImageAnnotation
+
+<div class="row">
+    <div class="col-md-4">
+        @ViewBag.MyLabel
+        <br />
+        <img src='@Url.Action("image")' alt="" />
+    </div>
+    
+@section scripts
+{
+    @*<script>
+        $(document).ready(function () {
+ 
+                $.ajax({
+                    url: baseApiUrl + "/api/CircleAnnotation",
+                    type: "GET",
+                    data: $(this).serialize()
+                }).done(function (data) {
+                    Console.log(data)
+                });
+            });
+        });
+    </script>*@
+}

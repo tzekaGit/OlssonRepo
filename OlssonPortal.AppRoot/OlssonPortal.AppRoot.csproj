@@ -1,0 +1,884 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{72FEE2D1-9694-4DF6-98FA-EB2A1C7500AF}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Olsen.WebApp</RootNamespace>
+    <AssemblyName>Olsen.WebApp</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=15.1.4.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.15.1.4.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.3.0.0\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery, Version=1.10.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.1.10.2\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Presentation" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Admin\AddPhoneNumber.aspx" />
+    <Content Include="Admin\Confirm.aspx" />
+    <Content Include="Admin\Forgot.aspx" />
+    <Content Include="Admin\Lockout.aspx" />
+    <Content Include="Admin\Login.aspx" />
+    <Content Include="Admin\Manage.aspx" />
+    <Content Include="Admin\ManageLogins.aspx" />
+    <Content Include="Admin\ManagePassword.aspx" />
+    <Content Include="Admin\OpenAuthProviders.ascx" />
+    <Content Include="Admin\Register.aspx" />
+    <Content Include="Admin\RegisterExternalLogin.aspx" />
+    <Content Include="Admin\ResetPassword.aspx" />
+    <Content Include="Admin\ResetPasswordConfirmation.aspx" />
+    <Content Include="Admin\Topics.aspx" />
+    <Content Include="Admin\TwoFactorAuthenticationSignIn.aspx" />
+    <Content Include="Admin\VerifyPhoneNumber.aspx" />
+    <Content Include="API\portalws.asmx" />
+    <Content Include="App_Data\leftNavMenu.xml" />
+    <Content Include="App_Data\xmlPackages\20160229_test2.xml" />
+    <Content Include="App_Data\xmlPackages\form1.xml" />
+    <Content Include="App_Data\xmlPackages\form_2.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Data\xmlPackages\form_1.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Data\xsl_template\Html5FormTemplate.xslt">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Data\xsl_template\commonFormTemplate.xslt">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Themes\Standard\img\ajax-spiner-ring.gif" />
+    <Content Include="App_Themes\Standard\img\close-icon.png" />
+    <Content Include="App_Themes\Standard\img\full-screen.png" />
+    <Content Include="App_Themes\Standard\img\grid\add.png" />
+    <Content Include="App_Themes\Standard\img\grid\attach-16x16.png" />
+    <Content Include="App_Themes\Standard\img\grid\BtnSave.png" />
+    <Content Include="App_Themes\Standard\img\grid\Cancel_32x32.png" />
+    <Content Include="App_Themes\Standard\img\grid\delete.png" />
+    <Content Include="App_Themes\Standard\img\grid\edit.png" />
+    <Content Include="App_Themes\Standard\img\grid\Edit_16x16.png" />
+    <Content Include="App_Themes\Standard\img\grid\exportTo_xls.gif" />
+    <Content Include="App_Themes\Standard\img\grid\ExportXlsSmall.png" />
+    <Content Include="App_Themes\Standard\img\grid\gridSprites.png" />
+    <Content Include="App_Themes\Standard\img\icons-set.jpg" />
+    <Content Include="App_Themes\Standard\img\icons-set.png" />
+    <Content Include="App_Themes\Standard\img\loader-spiner.gif" />
+    <Content Include="App_Themes\Standard\img\minusIcon.gif" />
+    <Content Include="App_Themes\Standard\img\normal-screen.png" />
+    <Content Include="App_Themes\Standard\img\plusIcon.png" />
+    <Content Include="App_Themes\Standard\img\Print_16x16.png" />
+    <Content Include="App_Themes\Standard\img\process.jpg" />
+    <Content Include="App_Themes\Standard\img\screen.png" />
+    <Content Include="App_Themes\Standard\img\Upload_16x16.png" />
+    <Content Include="App_Themes\Standard\Styles.css" />
+    <Content Include="Contact.aspx" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Forms\cloneControl.html" />
+    <Content Include="Forms\dataSubmit.html" />
+    <Content Include="Forms\Forms.html" />
+    <Content Include="Forms\formTest.html" />
+    <Content Include="Forms\index.html" />
+    <Content Include="Forms\jsonStringlify.html" />
+    <Content Include="Forms\js\app.js" />
+    <Content Include="Forms\libs\jqm\datePickUp.js" />
+    <Content Include="Forms\libs\jqm\images\ajax-loader.gif" />
+    <Content Include="Forms\libs\jqm\images\icons-18-black.png" />
+    <Content Include="Forms\libs\jqm\images\icons-18-white.png" />
+    <Content Include="Forms\libs\jqm\images\icons-36-black.png" />
+    <Content Include="Forms\libs\jqm\images\icons-36-white.png" />
+    <Content Include="Forms\libs\jqm\jquery.url-1.8.6.js" />
+    <Content Include="Forms\libs\jqm\jquery.js" />
+    <Content Include="Forms\libs\jqm\jquery.mobile-1.3.2.min.css" />
+    <Content Include="Forms\libs\jqm\jquery.mobile-1.3.2.min.js" />
+    <Content Include="Forms\libs\jqm\jsonfn.js" />
+    <Content Include="Forms\libs\jqm\newRecord.html" />
+    <Content Include="Forms\libs\jqm\url.min.js" />
+    <Content Include="Forms\login.html" />
+    <Content Include="controls\XMLDbForm.ascx" />
+    <Content Include="favicon.ico" />
+    <Content Include="Admin\Web.config" />
+    <Content Include="Forms\pannels.html" />
+    <Content Include="Forms\savetofile.aspx" />
+    <Content Include="Forms\newRecord.html" />
+    <Content Include="Forms\singlePage.html" />
+    <Content Include="Forms\takePhoto.aspx" />
+    <Content Include="Forms\takePhotoWin.aspx" />
+    <Content Include="Forms\teestAPI.html" />
+    <Content Include="Forms\themes\images\ajax-loader.gif" />
+    <Content Include="Forms\themes\images\icons-png\action-black.png" />
+    <Content Include="Forms\themes\images\icons-png\action-white.png" />
+    <Content Include="Forms\themes\images\icons-png\alert-black.png" />
+    <Content Include="Forms\themes\images\icons-png\alert-white.png" />
+    <Content Include="Forms\themes\images\icons-png\arrow-d-black.png" />
+    <Content Include="Forms\themes\images\icons-png\arrow-d-l-black.png" />
+    <Content Include="Forms\themes\images\icons-png\arrow-d-l-white.png" />
+    <Content Include="Forms\themes\images\icons-png\arrow-d-r-black.png" />
+    <Content Include="Forms\themes\images\icons-png\arrow-d-r-white.png" />
+    <Content Include="Forms\themes\images\icons-png\arrow-d-white.png" />
+    <Content Include="Forms\themes\images\icons-png\arrow-l-black.png" />
+    <Content Include="Forms\themes\images\icons-png\arrow-l-white.png" />
+    <Content Include="Forms\themes\images\icons-png\arrow-r-black.png" />
+    <Content Include="Forms\themes\images\icons-png\arrow-r-white.png" />
+    <Content Include="Forms\themes\images\icons-png\arrow-u-black.png" />
+    <Content Include="Forms\themes\images\icons-png\arrow-u-l-black.png" />
+    <Content Include="Forms\themes\images\icons-png\arrow-u-l-white.png" />
+    <Content Include="Forms\themes\images\icons-png\arrow-u-r-black.png" />
+    <Content Include="Forms\themes\images\icons-png\arrow-u-r-white.png" />
+    <Content Include="Forms\themes\images\icons-png\arrow-u-white.png" />
+    <Content Include="Forms\themes\images\icons-png\audio-black.png" />
+    <Content Include="Forms\themes\images\icons-png\audio-white.png" />
+    <Content Include="Forms\themes\images\icons-png\back-black.png" />
+    <Content Include="Forms\themes\images\icons-png\back-white.png" />
+    <Content Include="Forms\themes\images\icons-png\bars-black.png" />
+    <Content Include="Forms\themes\images\icons-png\bars-white.png" />
+    <Content Include="Forms\themes\images\icons-png\bullets-black.png" />
+    <Content Include="Forms\themes\images\icons-png\bullets-white.png" />
+    <Content Include="Forms\themes\images\icons-png\calendar-black.png" />
+    <Content Include="Forms\themes\images\icons-png\calendar-white.png" />
+    <Content Include="Forms\themes\images\icons-png\camera-black.png" />
+    <Content Include="Forms\themes\images\icons-png\camera-white.png" />
+    <Content Include="Forms\themes\images\icons-png\carat-d-black.png" />
+    <Content Include="Forms\themes\images\icons-png\carat-d-white.png" />
+    <Content Include="Forms\themes\images\icons-png\carat-l-black.png" />
+    <Content Include="Forms\themes\images\icons-png\carat-l-white.png" />
+    <Content Include="Forms\themes\images\icons-png\carat-r-black.png" />
+    <Content Include="Forms\themes\images\icons-png\carat-r-white.png" />
+    <Content Include="Forms\themes\images\icons-png\carat-u-black.png" />
+    <Content Include="Forms\themes\images\icons-png\carat-u-white.png" />
+    <Content Include="Forms\themes\images\icons-png\check-black.png" />
+    <Content Include="Forms\themes\images\icons-png\check-white.png" />
+    <Content Include="Forms\themes\images\icons-png\clock-black.png" />
+    <Content Include="Forms\themes\images\icons-png\clock-white.png" />
+    <Content Include="Forms\themes\images\icons-png\cloud-black.png" />
+    <Content Include="Forms\themes\images\icons-png\cloud-white.png" />
+    <Content Include="Forms\themes\images\icons-png\comment-black.png" />
+    <Content Include="Forms\themes\images\icons-png\comment-white.png" />
+    <Content Include="Forms\themes\images\icons-png\delete-black.png" />
+    <Content Include="Forms\themes\images\icons-png\delete-white.png" />
+    <Content Include="Forms\themes\images\icons-png\edit-black.png" />
+    <Content Include="Forms\themes\images\icons-png\edit-white.png" />
+    <Content Include="Forms\themes\images\icons-png\eye-black.png" />
+    <Content Include="Forms\themes\images\icons-png\eye-white.png" />
+    <Content Include="Forms\themes\images\icons-png\forbidden-black.png" />
+    <Content Include="Forms\themes\images\icons-png\forbidden-white.png" />
+    <Content Include="Forms\themes\images\icons-png\forward-black.png" />
+    <Content Include="Forms\themes\images\icons-png\forward-white.png" />
+    <Content Include="Forms\themes\images\icons-png\gear-black.png" />
+    <Content Include="Forms\themes\images\icons-png\gear-white.png" />
+    <Content Include="Forms\themes\images\icons-png\grid-black.png" />
+    <Content Include="Forms\themes\images\icons-png\grid-white.png" />
+    <Content Include="Forms\themes\images\icons-png\heart-black.png" />
+    <Content Include="Forms\themes\images\icons-png\heart-white.png" />
+    <Content Include="Forms\themes\images\icons-png\home-black.png" />
+    <Content Include="Forms\themes\images\icons-png\home-white.png" />
+    <Content Include="Forms\themes\images\icons-png\info-black.png" />
+    <Content Include="Forms\themes\images\icons-png\info-white.png" />
+    <Content Include="Forms\themes\images\icons-png\location-black.png" />
+    <Content Include="Forms\themes\images\icons-png\location-white.png" />
+    <Content Include="Forms\themes\images\icons-png\lock-black.png" />
+    <Content Include="Forms\themes\images\icons-png\lock-white.png" />
+    <Content Include="Forms\themes\images\icons-png\mail-black.png" />
+    <Content Include="Forms\themes\images\icons-png\mail-white.png" />
+    <Content Include="Forms\themes\images\icons-png\minus-black.png" />
+    <Content Include="Forms\themes\images\icons-png\minus-white.png" />
+    <Content Include="Forms\themes\images\icons-png\navigation-black.png" />
+    <Content Include="Forms\themes\images\icons-png\navigation-white.png" />
+    <Content Include="Forms\themes\images\icons-png\phone-black.png" />
+    <Content Include="Forms\themes\images\icons-png\phone-white.png" />
+    <Content Include="Forms\themes\images\icons-png\plus-black.png" />
+    <Content Include="Forms\themes\images\icons-png\plus-white.png" />
+    <Content Include="Forms\themes\images\icons-png\power-black.png" />
+    <Content Include="Forms\themes\images\icons-png\power-white.png" />
+    <Content Include="Forms\themes\images\icons-png\recycle-black.png" />
+    <Content Include="Forms\themes\images\icons-png\recycle-white.png" />
+    <Content Include="Forms\themes\images\icons-png\refresh-black.png" />
+    <Content Include="Forms\themes\images\icons-png\refresh-white.png" />
+    <Content Include="Forms\themes\images\icons-png\search-black.png" />
+    <Content Include="Forms\themes\images\icons-png\search-white.png" />
+    <Content Include="Forms\themes\images\icons-png\shop-black.png" />
+    <Content Include="Forms\themes\images\icons-png\shop-white.png" />
+    <Content Include="Forms\themes\images\icons-png\star-black.png" />
+    <Content Include="Forms\themes\images\icons-png\star-white.png" />
+    <Content Include="Forms\themes\images\icons-png\tag-black.png" />
+    <Content Include="Forms\themes\images\icons-png\tag-white.png" />
+    <Content Include="Forms\themes\images\icons-png\user-black.png" />
+    <Content Include="Forms\themes\images\icons-png\user-white.png" />
+    <Content Include="Forms\themes\images\icons-png\video-black.png" />
+    <Content Include="Forms\themes\images\icons-png\video-white.png" />
+    <Content Include="Forms\themes\jquery.mobile.icons.min.css" />
+    <Content Include="Forms\themes\olssonThemes.css" />
+    <Content Include="Forms\themes\olssonThemes.min.css" />
+    <Content Include="images\olsson-logo.jpg" />
+    <Content Include="Mobile\jQuery Mobile\todoapp\about.html" />
+    <Content Include="Mobile\jQuery Mobile\todoapp\app.js" />
+    <Content Include="Mobile\jQuery Mobile\todoapp\delete.html" />
+    <Content Include="Mobile\jQuery Mobile\todoapp\form.html" />
+    <Content Include="Mobile\jQuery Mobile\todoapp\index.html" />
+    <Content Include="Mobile\jQuery Mobile\todoapp\style.css" />
+    <Content Include="samples-gh-pages\.csslintrc" />
+    <Content Include="samples-gh-pages\.eslintrc" />
+    <Content Include="samples-gh-pages\.travis.yml" />
+    <Content Include="samples-gh-pages\AUTHORS" />
+    <Content Include="samples-gh-pages\CONTRIBUTING.md" />
+    <Content Include="samples-gh-pages\LICENSE.md" />
+    <Content Include="samples-gh-pages\package.json" />
+    <Content Include="samples-gh-pages\README.md" />
+    <Content Include="samples-gh-pages\release\ChromeWebRTCNetworkLimiterExtension_0.1.zip" />
+    <Content Include="samples-gh-pages\release\ChromeWebRTCNetworkLimiterExtension_0.2.1.1.zip" />
+    <Content Include="samples-gh-pages\release\desktopCaptureExtension.zip" />
+    <Content Include="samples-gh-pages\src\content\devices\multi\video\chrome.ogv" />
+    <Content Include="samples-gh-pages\src\content\devices\multi\video\chrome.webm" />
+    <Content Include="samples-gh-pages\src\content\extensions\desktopcapture\extension\manifest.json" />
+    <Content Include="samples-gh-pages\src\content\extensions\desktopcapture\README.md" />
+    <Content Include="samples-gh-pages\src\content\extensions\multipleroutes\src\manifest.json" />
+    <Content Include="samples-gh-pages\src\content\extensions\multipleroutes\src\README.md" />
+    <Content Include="samples-gh-pages\src\content\extensions\multipleroutes\src\_locales\en\messages.json" />
+    <Content Include="samples-gh-pages\test\README.md" />
+    <Content Include="samples-gh-pages\test\run-tests" />
+    <Content Include="Mobile\jQuery Mobile\todoapp\.htaccess" />
+    <Content Include="packages.config" />
+    <Content Include="Forms\default.aspx" />
+    <Content Include="Forms\form1.aspx" />
+    <Content Include="images\flavico.bmp" />
+    <Content Include="images\flavico.png" />
+    <Content Include="images\logo-scientel.png" />
+    <Content Include="samples-gh-pages\.gitignore" />
+    <Content Include="samples-gh-pages\google1b7eb21c5b594ba0.html" />
+    <Content Include="samples-gh-pages\Gruntfile.js" />
+    <Content Include="samples-gh-pages\index.html" />
+    <Content Include="samples-gh-pages\src\content\datachannel\basic\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\datachannel\basic\index.html" />
+    <Content Include="samples-gh-pages\src\content\datachannel\basic\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\datachannel\basic\js\test.js" />
+    <Content Include="samples-gh-pages\src\content\datachannel\datatransfer\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\datachannel\datatransfer\index.html" />
+    <Content Include="samples-gh-pages\src\content\datachannel\datatransfer\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\datachannel\datatransfer\js\test.js" />
+    <Content Include="samples-gh-pages\src\content\datachannel\filetransfer\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\datachannel\filetransfer\index.html" />
+    <Content Include="samples-gh-pages\src\content\datachannel\filetransfer\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\datachannel\filetransfer\js\test.js" />
+    <Content Include="samples-gh-pages\src\content\devices\input-output\index.html" />
+    <Content Include="samples-gh-pages\src\content\devices\input-output\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\devices\input-output\js\test.js" />
+    <Content Include="samples-gh-pages\src\content\devices\multi\audio\audio.mp3" />
+    <Content Include="samples-gh-pages\src\content\devices\multi\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\devices\multi\images\poster.jpg" />
+    <Content Include="samples-gh-pages\src\content\devices\multi\index.html" />
+    <Content Include="samples-gh-pages\src\content\devices\multi\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\devices\multi\video\chrome.mp4" />
+    <Content Include="samples-gh-pages\src\content\extensions\desktopcapture\app.js" />
+    <Content Include="samples-gh-pages\src\content\extensions\desktopcapture\extension\background.js" />
+    <Content Include="samples-gh-pages\src\content\extensions\desktopcapture\extension\content-script.js" />
+    <Content Include="samples-gh-pages\src\content\extensions\desktopcapture\extension\icon.png" />
+    <Content Include="samples-gh-pages\src\content\extensions\desktopcapture\index.html" />
+    <Content Include="samples-gh-pages\src\content\extensions\multipleroutes\img\netli_1280.png" />
+    <Content Include="samples-gh-pages\src\content\extensions\multipleroutes\src\background.html" />
+    <Content Include="samples-gh-pages\src\content\extensions\multipleroutes\src\eventPage.js" />
+    <Content Include="samples-gh-pages\src\content\extensions\multipleroutes\src\img\icon_128.png" />
+    <Content Include="samples-gh-pages\src\content\extensions\multipleroutes\src\img\icon_16.png" />
+    <Content Include="samples-gh-pages\src\content\extensions\multipleroutes\src\options.html" />
+    <Content Include="samples-gh-pages\src\content\extensions\multipleroutes\src\options.js" />
+    <Content Include="samples-gh-pages\src\content\extensions\multipleroutes\src\utils.js" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\audio\index.html" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\audio\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\canvas\index.html" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\canvas\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\face\index.html" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\filter\index.html" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\filter\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\gum\index.html" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\gum\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\gum\js\test.js" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\record\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\record\index.html" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\record\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\resolution\index.html" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\resolution\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\source\index.html" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\volume\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\volume\index.html" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\volume\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\getusermedia\volume\js\soundmeter.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\audio\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\audio\index.html" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\audio\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\audio\js\test.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\constraints\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\constraints\index.html" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\constraints\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\create-offer\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\create-offer\index.html" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\create-offer\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\dtmf\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\dtmf\index.html" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\dtmf\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\multiple-relay\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\multiple-relay\index.html" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\multiple-relay\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\multiple\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\multiple\index.html" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\multiple\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\multiple\js\test.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\munge-sdp\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\munge-sdp\index.html" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\munge-sdp\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\munge-sdp\js\test.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\pc1\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\pc1\index.html" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\pc1\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\pc1\js\test.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\pr-answer\index.html" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\pr-answer\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\restart-ice\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\restart-ice\index.html" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\restart-ice\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\restart-ice\js\test.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\states\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\states\index.html" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\states\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\trickle-ice\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\trickle-ice\index.html" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\trickle-ice\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\trickle-ice\js\test.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\webaudio-input\audio\Shamisen-C4.wav" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\webaudio-input\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\webaudio-input\index.html" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\webaudio-input\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\webaudio-input\js\webaudioextended.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\webaudio-output\css\main.css" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\webaudio-output\index.html" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\webaudio-output\js\main.js" />
+    <Content Include="samples-gh-pages\src\content\peerconnection\webaudio-output\js\third_party\streamvisualizer.js" />
+    <Content Include="samples-gh-pages\src\css\main.css" />
+    <Content Include="samples-gh-pages\src\images\webrtc-icon-192x192.png" />
+    <Content Include="samples-gh-pages\src\js\adapter.js" />
+    <Content Include="samples-gh-pages\src\js\common.js" />
+    <Content Include="samples-gh-pages\src\js\lib\ccv.js" />
+    <Content Include="samples-gh-pages\src\js\lib\face.js" />
+    <Content Include="samples-gh-pages\src\js\lib\ga.js" />
+    <Content Include="samples-gh-pages\src\js\third_party\graph.js" />
+    <Content Include="samples-gh-pages\src\js\videopipe.js" />
+    <Content Include="samples-gh-pages\test\selenium-lib.js" />
+    <Content Include="samples-gh-pages\test\server.js" />
+    <Content Include="samples-gh-pages\test\tests.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Site.Master" />
+    <Content Include="test.aspx" />
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Bundle.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Site.Mobile.Master" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\AddPhoneNumber.aspx.cs">
+      <DependentUpon>AddPhoneNumber.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddPhoneNumber.aspx.designer.cs">
+      <DependentUpon>AddPhoneNumber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Confirm.aspx.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Confirm.aspx.designer.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Forgot.aspx.cs">
+      <DependentUpon>Forgot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Forgot.aspx.designer.cs">
+      <DependentUpon>Forgot.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Lockout.aspx.cs">
+      <DependentUpon>Lockout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Lockout.aspx.designer.cs">
+      <DependentUpon>Lockout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageLogins.aspx.cs">
+      <DependentUpon>ManageLogins.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageLogins.aspx.designer.cs">
+      <DependentUpon>ManageLogins.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManagePassword.aspx.cs">
+      <DependentUpon>ManagePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManagePassword.aspx.designer.cs">
+      <DependentUpon>ManagePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\OpenAuthProviders.ascx.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\OpenAuthProviders.ascx.designer.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\RegisterExternalLogin.aspx.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\RegisterExternalLogin.aspx.designer.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ResetPasswordConfirmation.aspx.cs">
+      <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ResetPasswordConfirmation.aspx.designer.cs">
+      <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Topics.aspx.cs">
+      <DependentUpon>Topics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Topics.aspx.designer.cs">
+      <DependentUpon>Topics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TwoFactorAuthenticationSignIn.aspx.cs">
+      <DependentUpon>TwoFactorAuthenticationSignIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TwoFactorAuthenticationSignIn.aspx.designer.cs">
+      <DependentUpon>TwoFactorAuthenticationSignIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\VerifyPhoneNumber.aspx.cs">
+      <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\VerifyPhoneNumber.aspx.designer.cs">
+      <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="API\portalws.asmx.cs">
+      <DependentUpon>portalws.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\XMLDbForm.ascx.cs">
+      <DependentUpon>XMLDbForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\XMLDbForm.ascx.designer.cs">
+      <DependentUpon>XMLDbForm.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\form1.aspx.cs">
+      <DependentUpon>form1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\form1.aspx.designer.cs">
+      <DependentUpon>form1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\savetofile.aspx.cs">
+      <DependentUpon>savetofile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\savetofile.aspx.designer.cs">
+      <DependentUpon>savetofile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\takePhoto.aspx.cs">
+      <DependentUpon>takePhoto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\takePhoto.aspx.designer.cs">
+      <DependentUpon>takePhoto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\takePhotoWin.aspx.cs">
+      <DependentUpon>takePhotoWin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\takePhotoWin.aspx.designer.cs">
+      <DependentUpon>takePhotoWin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_code\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Projects\Olsson.DataAccess\Olsson.DataAccess.csproj">
+      <Project>{dcba5f84-79a3-4f82-b668-77469f1dd3b8}</Project>
+      <Name>Olsson.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Projects\Olsson.Security\Olsson.Security.csproj">
+      <Project>{fcc93aed-2631-4675-a896-7dc738a56869}</Project>
+      <Name>Olsson.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Projects\Olsson.WebLibrary\Olsson.WebLibrary.csproj">
+      <Project>{683dd926-6b28-4298-a21f-096e1af3334a}</Project>
+      <Name>Olsson.WebLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58328</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58328/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

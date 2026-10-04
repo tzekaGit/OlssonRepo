@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Olsson.Mobile.DataBase.SEM</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{3f9aa46f-a6eb-4306-b5dc-5a28bc34ea5b}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Olsson.Mobile.DataBase.SEM</RootNamespace>
+    <AssemblyName>Olsson.Mobile.DataBase.SEM</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="dbo\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dbSchema.scmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\zstbCode.sql" />
+    <Build Include="dbo\Tables\tbJob.sql" />
+    <Build Include="dbo\Tables\tbFormDataElementImageAnnotation.sql" />
+    <Build Include="dbo\Tables\tbFormDataElementImage.sql" />
+    <Build Include="dbo\Tables\tbFormDataElement.sql" />
+    <Build Include="dbo\Tables\tbFormData_Errors.sql" />
+    <Build Include="dbo\Tables\tbFormData.sql" />
+    <Build Include="dbo\Tables\tb_FormProperties.sql" />
+    <Build Include="dbo\Tables\tb_FormElementFeatures.sql" />
+    <Build Include="dbo\Tables\SYS_tbUserGroup.sql" />
+    <Build Include="dbo\Tables\SYS_tbUser.sql" />
+    <Build Include="dbo\Tables\SYS_tbNumberSequence.sql" />
+    <Build Include="dbo\Tables\SYS_tbNetUsers.sql" />
+    <Build Include="dbo\Tables\SYS_tbNetUserRoles.sql" />
+    <Build Include="dbo\Tables\SYS_tbNetRoles.sql" />
+    <Build Include="dbo\Tables\SYS_tbLookupList.sql" />
+    <Build Include="dbo\Tables\SYS_tbHelp.sql" />
+    <Build Include="dbo\Tables\SYS_tbElementAudit.sql" />
+    <Build Include="dbo\Tables\sys_tb_dbMailSource_Archive.sql" />
+    <Build Include="dbo\Tables\sys_tb_dbMailSource.sql" />
+    <Build Include="dbo\Tables\sys_tb_dbMailSetUp.sql" />
+    <Build Include="dbo\Tables\SYS_Debug_INSERT.sql" />
+    <Build Include="dbo\Tables\SEM_tbSchemaTableField.sql" />
+    <Build Include="dbo\Tables\SEM_tbSchemaTable.sql" />
+    <Build Include="dbo\Tables\SEM_tbLookupList.sql" />
+    <Build Include="dbo\Tables\SEM_tbFormSectionElement.sql" />
+    <Build Include="dbo\Tables\SEM_tbFormSection.sql" />
+    <Build Include="dbo\Tables\SEM_tbFormRoleList.sql" />
+    <Build Include="dbo\Tables\SEM_tbFormArchive.sql" />
+    <Build Include="dbo\Tables\SEM_tbForm.sql" />
+    <Build Include="dbo\Tables\SEM_tbFileAttachment.sql" />
+    <Build Include="dbo\Tables\SEM_tbEmailTemplate.sql" />
+    <Build Include="dbo\Views\zv_ObjectListing.sql" />
+    <Build Include="dbo\Views\zv_ObjectFieldListing.sql" />
+    <Build Include="dbo\Views\WEB_v_Users.sql" />
+    <Build Include="dbo\Views\tbFormDataElement_v_Portal.sql" />
+    <Build Include="dbo\Views\tbData_v_RecordData.sql" />
+    <Build Include="dbo\Views\sys_v_sysmail_account.sql" />
+    <Build Include="dbo\Views\sys_v_MailLog.sql" />
+    <Build Include="dbo\Views\sys_v_dbMailSource.sql" />
+    <Build Include="dbo\Views\SEM_vFormSchema.sql" />
+    <Build Include="dbo\Views\SEM_v_XML_SubmittedForm.sql" />
+    <Build Include="dbo\Views\SEM_v_XML_NewForm.sql" />
+    <Build Include="dbo\Views\SEM_v_UIFormSelect.sql" />
+    <Build Include="dbo\Views\SEM_v_RecordData.sql" />
+    <Build Include="dbo\Views\SEM_v_Record.sql" />
+    <Build Include="dbo\Views\SEM_v_ElementDefinition.sql" />
+    <Build Include="dbo\Views\SEM_v_DataElements.sql" />
+    <Build Include="dbo\Views\SEM_v_ASPusers.sql" />
+    <Build Include="dbo\Functions\Sikich_IDGen.sql" />
+    <Build Include="dbo\Functions\FN_FormSectionXML.sql" />
+    <Build Include="dbo\Functions\FN_FormSectionProperties.sql" />
+    <Build Include="dbo\Functions\FN_FormElementXML.sql" />
+    <Build Include="dbo\Functions\FN_FormElementPropertiesXML.sql" />
+    <Build Include="dbo\Functions\FN_FormElementProperties.sql" />
+    <Build Include="dbo\Functions\FN_FormElementListItems.sql" />
+    <Build Include="dbo\Functions\FN_FormElementFeatures.sql" />
+    <Build Include="dbo\Functions\FN_FormCustomFieldFunctions.sql" />
+    <Build Include="dbo\Functions\GetDependents.sql" />
+    <Build Include="dbo\Functions\fn_SplitString_Value.sql" />
+    <Build Include="dbo\Functions\fn_SplitString.sql" />
+    <Build Include="dbo\Stored Procedures\zsik_sp_SendDbMailReport.sql" />
+    <Build Include="dbo\Stored Procedures\sys_sp_dbMailSend.sql" />
+    <Build Include="dbo\Stored Procedures\setUp_dbMail_Plugin.sql" />
+    <Build Include="dbo\Stored Procedures\SEM_sp_validateField.sql" />
+    <Build Include="dbo\Stored Procedures\SEM_sp_Upsert_Record_Data.sql" />
+    <Build Include="dbo\Stored Procedures\SEM_sp_upsert_DocumentHeader.sql" />
+    <Build Include="dbo\Stored Procedures\SEM_sp_Update_AutoGen_Fields.sql" />
+    <Build Include="dbo\Stored Procedures\SEM_sp_Remove_Record_Data.sql" />
+    <Build Include="dbo\Stored Procedures\SEM_sp_PublishFormXML.sql" />
+    <Build Include="dbo\Stored Procedures\SEM_sp_Parse_FieldName.sql" />
+    <Build Include="dbo\Stored Procedures\SEM_sp_FormXMLTransformation.sql" />
+    <Build Include="dbo\Stored Procedures\SEM_sp_Copy_Record_Data.sql" />
+    <Build Include="dbo\Stored Procedures\GetNextNumber.sql" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olsson.Mobile.Api", "Olsson.Mobile.Api\Olsson.Mobile.Api.csproj", "{2D6678AC-ED49-4DD2-8E4A-1E28B243E8C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{3E336C80-859A-4AC3-B52E-5D86F92E2439}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "General Test", "General Test\General Test.csproj", "{7544077F-5F7C-4244-8024-A895412F32F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D6678AC-ED49-4DD2-8E4A-1E28B243E8C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D6678AC-ED49-4DD2-8E4A-1E28B243E8C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D6678AC-ED49-4DD2-8E4A-1E28B243E8C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D6678AC-ED49-4DD2-8E4A-1E28B243E8C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7544077F-5F7C-4244-8024-A895412F32F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7544077F-5F7C-4244-8024-A895412F32F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7544077F-5F7C-4244-8024-A895412F32F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7544077F-5F7C-4244-8024-A895412F32F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7544077F-5F7C-4244-8024-A895412F32F1} = {3E336C80-859A-4AC3-B52E-5D86F92E2439}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://napdevdotnet01:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Olsson.Mobile.Api\\Olsson.Mobile.Api.csproj
+		SccProjectName1 = Olsson.Mobile.Api
+		SccLocalPath1 = Olsson.Mobile.Api
+		SccProjectUniqueName2 = General\u0020Test\\General\u0020Test.csproj
+		SccProjectTopLevelParentUniqueName2 = Olsson.Mobile.Api.sln
+		SccProjectName2 = General\u0020Test
+		SccLocalPath2 = General\u0020Test
+	EndGlobalSection
+EndGlobal
